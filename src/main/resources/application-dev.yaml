@@ -1,0 +1,46 @@
+spring:
+  application.name: yrkesskade-kodeverk
+  main:
+    banner-mode: "off"
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:postgresql://${YRKESSKADE_KODEVERK_DB_HOST}:${YRKESSKADE_KODEVERK_DB_PORT}/${YRKESSKADE_KODEVERK_DB_DATABASE}
+    username: ${YRKESSKADE_KODEVERK_DB_USERNAME}
+    password: ${YRKESSKADE_KODEVERK_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      connection-test-query: "select 1"
+      max-lifetime: 30000
+      minimum-idle: 1
+      data-source-properties.stringtype: unspecified # Nødvendig for å kunde sende en String til et json-felt i PostgresSql
+
+no.nav.security.jwt.issuer:
+  client:
+    registration:
+      kodeverk-oppslag:
+        well-known-url: ${TOKEN_X_WELL_KNOWN_URL}
+        token-exchange:
+          audience: dev-fss:org:kodeverk
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        authentication:
+          client-id: ${TOKEN_X_CLIENT_ID}
+          client-jwk: ${TOKEN_X_PRIVATE_JWK}
+          client-secret: hemmelig
+  tokenx:
+    discoveryurl: ${TOKEN_X_WELL_KNOWN_URL}
+    accepted_audience: dev-gcp:yrkesskade:yrkesskade-kodeverk
+
+maskinporten.client.enabled: false
+
+mock:
+  enabled: true
+  port: 10099
+
+api:
+  client:
+    kodeverk:
+      url: https://kodeverk.dev.intern.nav.no/
+
+proxy.target.app: dummy
+

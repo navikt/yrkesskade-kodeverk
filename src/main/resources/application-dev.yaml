@@ -31,8 +31,6 @@ no.nav.security.jwt.issuer:
     discoveryurl: ${TOKEN_X_WELL_KNOWN_URL}
     accepted_audience: dev-gcp:yrkesskade:yrkesskade-kodeverk
 
-maskinporten.client.enabled: false
-
 mock:
   enabled: true
   port: 10099

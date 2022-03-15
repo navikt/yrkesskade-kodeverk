@@ -2,15 +2,15 @@ package no.nav.yrkesskade.kodeverk.controller.v1
 
 import no.nav.security.token.support.core.api.ProtectedWithClaims
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.*
-import no.nav.yrkesskade.kodeverk.security.AutentisertBruker
-import no.nav.yrkesskade.kodeverk.security.ISSUER
-import no.nav.yrkesskade.kodeverk.security.LEVEL
 import no.nav.yrkesskade.kodeverk.service.KodeverkService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+
+const val LEVEL = "acr=Level4"
+const val ISSUER = "tokenx"
 
 @ProtectedWithClaims(issuer = ISSUER, claimMap = [LEVEL])
 @RestController()

@@ -1,0 +1,69 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: yrkesskade-kodeverk
+  namespace: yrkesskade
+  labels:
+    "team": yrkesskade
+spec:
+  image: {{image}}
+  liveness:
+    path: "/internal/health"
+    port: 8080
+    initialDelay: 20
+    timeout: 60
+  readiness:
+    path: "/internal/health"
+    port: 8080
+    initialDelay: 20
+    timeout: 60
+  replicas:
+    min: 2
+    max: 2
+    cpuThresholdPercentage: 50
+  prometheus:
+    enabled: true
+    path: "/internal/prometheus"
+  accessPolicy:
+    inbound:
+      rules:
+        - application: yrkesskade-melding-api
+        - application: yrkesskade-skjema
+
+      external:
+        - host: unleash.nais.io
+    { { #each externalHosts}}
+        - host: {{host } }
+        { { #if ports}}
+          ports:
+            { { #each ports}}
+            - name: {{name } }
+              port: {{port } }
+              protocol: {{protocol}}
+        {{/each}}
+        {{/if}}
+    {{/each}}
+  tokenx:
+    enabled: true
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: {{springProfile}}
+  resources:
+    limits:
+      cpu: "2"
+      memory: "2Gi"
+    requests:
+      cpu: "200m"
+      memory: "1024Mi"
+  ingresses:
+  {{#each ingresses as |url|}}
+     - {{url}}
+  {{/each}}
+  gcp:
+    sqlInstances:
+      - type: POSTGRES_14
+        databases:
+          - name: yrkesskade-kodeverk-db
+            envVarPrefix: YRKESSKADE_KODEVERK_DB
+  secureLogs:
+    enabled: true

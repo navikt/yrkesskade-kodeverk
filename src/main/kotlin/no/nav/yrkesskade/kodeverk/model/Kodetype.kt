@@ -3,7 +3,7 @@ package no.nav.yrkesskade.kodeverk.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "kode_type")
+@Table(name = "type")
 data class Kodetype(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ data class Kodetype(
 
     @ManyToMany
     @JoinTable(
-        name = "kode_type_kategori",
+        name = "kategori_type",
         joinColumns = [JoinColumn(name = "kategori_id")],
         inverseJoinColumns = [JoinColumn(name = "type_id")]
     )

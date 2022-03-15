@@ -6,9 +6,7 @@ import no.nav.security.token.support.client.core.oauth2.OAuth2AccessTokenService
 import no.nav.security.token.support.client.spring.ClientConfigurationProperties
 import no.nav.yrkesskade.kodeverk.*
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiDto
-import no.nav.yrkesskade.kodeverk.model.Kodeverdi
 import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.api.GetKodeverkKoderBetydningerResponse
-import no.nav.yrkesskade.kodeverk.security.AutentisertBruker
 import org.springframework.beans.factory.annotation.Value
 import javax.ws.rs.client.Client
 import org.springframework.cache.annotation.Cacheable

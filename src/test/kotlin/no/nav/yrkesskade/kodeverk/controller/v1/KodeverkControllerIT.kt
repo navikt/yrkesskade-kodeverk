@@ -53,7 +53,7 @@ class KodeverkControllerIT : AbstractIT() {
                 .header(HttpHeaders.AUTHORIZATION, "Bearer $jwt")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdier").isArray)
-            .andExpect(jsonPath("$.kodeverdier.length()").value(8))
+            .andExpect(jsonPath("$.kodeverdier.length()").value(9))
 
     }
 
@@ -66,7 +66,7 @@ class KodeverkControllerIT : AbstractIT() {
             get("$KODEVERK_V1/typer/tidsrom/kategorier/arbeidstaker/kodeverdier")
                 .header(HttpHeaders.AUTHORIZATION, "Bearer $jwt")
         ).andExpect(status().isOk)
-            .andExpect(jsonPath("$.kodeverdier.length()").value(8))
+            .andExpect(jsonPath("$.kodeverdier.length()").value(9))
 
     }
 
@@ -82,7 +82,7 @@ class KodeverkControllerIT : AbstractIT() {
             get("$KODEVERK_V1/typer/tidsrom/kategorier/militær/kodeverdier")
                 .header(HttpHeaders.AUTHORIZATION, "Bearer $jwt")
         ).andExpect(status().isOk)
-            .andExpect(jsonPath("$.kodeverdier.length()").value(10))
+            .andExpect(jsonPath("$.kodeverdier.length()").value(11))
 
     }
 

@@ -3,7 +3,7 @@ package no.nav.yrkesskade.kodeverk.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "kode_kategori")
+@Table(name = "kategori")
 data class Kodekategori(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

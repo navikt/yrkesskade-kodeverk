@@ -9,12 +9,12 @@ import org.springframework.data.repository.query.Param
 interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
     @Query(
         value = """
-            SELECT kv.kode, kv.spraak, kv.verdi FROM kode_verdi kv
+            SELECT kv.kode, kv.spraak, kv.verdi FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
             WHERE k.kategori_id IS NULL
             AND k.type_id = :typeId
             UNION
-            SELECT kv.kode, kv.spraak, kv.verdi FROM kode_verdi kv
+            SELECT kv.kode, kv.spraak, kv.verdi FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
             WHERE k.kategori_id = :kategoriId
             AND k.type_id = :typeId

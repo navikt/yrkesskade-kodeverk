@@ -11,7 +11,7 @@ class KodeverdiId(
     val spraak: String = "nb") : Serializable
 
 @Entity
-@Table(name = "kode_verdi")
+@Table(name = "verdi")
 @IdClass(KodeverdiId::class)
 data class Kodeverdi (
     @Id val kode: String = "",

@@ -5,6 +5,8 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     url: jdbc:postgresql://localhost:5432/yrkesskade_kodeverk
+    username: ${YRKESSKADE_KODEVERK_DB_USERNAME}
+    password: ${YRKESSKADE_KODEVERK_DB_PASSWORD}
 
 no.nav.security.jwt:
   client:

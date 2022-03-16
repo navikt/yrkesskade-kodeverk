@@ -43,11 +43,12 @@ class KodeverkClient(
             .header(HEADER_AUTHORIZATION, BEARER + exchangeToken)
     }
 
+    @Suppress("SameParameterValue")
     private fun hentKodeverkBetydning(navn: String, ekskluderUgyldige: Boolean): List<KodeverdiDto> {
         buildRequest("api/v1/kodeverk/$navn/koder/betydninger", ekskluderUgyldige).get().use { response ->
             val responseBody = response.readEntity(String::class.java)
             if (SUCCESSFUL != response.statusInfo.family) {
-                throw ClientException(response.location.toString(), response.status, responseBody)
+                throw ClientException("Kunne ikke hente kodeverk $navn", response.location.toString(), response.status, responseBody)
             }
             return objectMapper.readValue(responseBody, GetKodeverkKoderBetydningerResponse::class.java)
                 .let { KodeverdiDto.fromKoderBetydningerResponse(navn, it) }

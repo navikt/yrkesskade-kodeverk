@@ -1,4 +1,4 @@
-package no.nav.yrkesskade.kodeverk.exception
+package no.nav.yrkesskade.kodeverk.error
 
 import javax.persistence.PersistenceException
 

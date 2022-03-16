@@ -1,11 +1,11 @@
 package no.nav.yrkesskade.kodeverk.config
 
-import no.nav.yrkesskade.kodeverk.exception.ManglendeDataException
+import no.nav.yrkesskade.kodeverk.error.Feil
+import no.nav.yrkesskade.kodeverk.error.ManglendeDataException
 import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.exception.ClientException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
-import java.lang.Exception
 
 @Suppress("NonAsciiCharacters")
 internal class ExceptionHandlerTest {
@@ -15,13 +15,15 @@ internal class ExceptionHandlerTest {
 
     @Test
     fun `skal håndtere feil fra felles kodeverk-klient`() {
-        val clientException = ClientException("http://huttiheita", HttpStatus.I_AM_A_TEAPOT.value(), "Dette er response body")
+        val clientException = ClientException("Dette er en feilmeldingstekst", "http://huttiheita", HttpStatus.I_AM_A_TEAPOT.value(), "Dette er response body")
 
         val responseEntity = exceptionHandler.handleClientException(clientException)
 
-        val newException = responseEntity.body!!
-        assertThat(newException.javaClass).isEqualTo(Exception().javaClass)
-        assertThat(newException.cause).isEqualTo(clientException)
+        val feil = responseEntity.body!!
+        assertThat(feil::class).isEqualTo(Feil::class)
+        assertThat(feil.statuskode).isEqualTo(HttpStatus.NOT_FOUND.value())
+        assertThat(feil.melding).contains(clientException.melding)
+        assertThat(feil.tidspunkt).isNotEmpty
         assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.NOT_FOUND)
     }
 
@@ -31,9 +33,11 @@ internal class ExceptionHandlerTest {
 
         val responseEntity = exceptionHandler.handleManglendeDataException(manglendeDataException)
 
-        val newException = responseEntity.body!!
-        assertThat(newException.javaClass).isEqualTo(Exception().javaClass)
-        assertThat(newException.cause).isEqualTo(manglendeDataException)
+        val feil = responseEntity.body!!
+        assertThat(feil::class).isEqualTo(Feil::class)
+        assertThat(feil.statuskode).isEqualTo(HttpStatus.NOT_FOUND.value())
+        assertThat(feil.melding).contains(manglendeDataException.message)
+        assertThat(feil.tidspunkt).isNotEmpty
         assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.NOT_FOUND)
     }
 
@@ -43,9 +47,11 @@ internal class ExceptionHandlerTest {
 
         val responseEntity = exceptionHandler.handleAllUncaughtException(annenException)
 
-        val newException = responseEntity.body!!
-        assertThat(newException.javaClass).isEqualTo(Exception().javaClass)
-        assertThat(newException.cause).isEqualTo(annenException)
+        val feil = responseEntity.body!!
+        assertThat(feil::class).isEqualTo(Feil::class)
+        assertThat(feil.statuskode).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR.value())
+        assertThat(feil.melding).isEqualTo("En feil har oppstått.")
+        assertThat(feil.tidspunkt).isNotEmpty
         assertThat(responseEntity.statusCode).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR)
     }
 

@@ -7,6 +7,7 @@ import no.nav.security.token.support.client.spring.ClientConfigurationProperties
 import no.nav.yrkesskade.kodeverk.*
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiDto
 import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.api.GetKodeverkKoderBetydningerResponse
+import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.exception.ClientException
 import org.springframework.beans.factory.annotation.Value
 import javax.ws.rs.client.Client
 import org.springframework.cache.annotation.Cacheable
@@ -27,7 +28,7 @@ class KodeverkClient(
 
     @Cacheable
     fun hentKodeverkVerdier(eksternNavn: String?): List<KodeverdiDto> {
-        return hentKodeverkBetydning(eksternNavn!!, eksluderUgyldige = true)
+        return hentKodeverkBetydning(eksternNavn!!, ekskluderUgyldige = true)
     }
 
     private fun buildRequest(path: String, eksluderUgyldige: Boolean): Invocation.Builder {
@@ -42,12 +43,11 @@ class KodeverkClient(
             .header(HEADER_AUTHORIZATION, BEARER + exchangeToken)
     }
 
-    private fun hentKodeverkBetydning(navn: String, eksluderUgyldige: Boolean): List<KodeverdiDto> {
-        buildRequest("api/v1/kodeverk/$navn/koder/betydninger", eksluderUgyldige).get().use { response ->
+    private fun hentKodeverkBetydning(navn: String, ekskluderUgyldige: Boolean): List<KodeverdiDto> {
+        buildRequest("api/v1/kodeverk/$navn/koder/betydninger", ekskluderUgyldige).get().use { response ->
             val responseBody = response.readEntity(String::class.java)
             if (SUCCESSFUL != response.statusInfo.family) {
-                //throw ClientException(consumerErrorMessage(endpoint, response.status, responseBody))
-                throw Exception("feil $responseBody")
+                throw ClientException(response.location.toString(), response.status, responseBody)
             }
             return objectMapper.readValue(responseBody, GetKodeverkKoderBetydningerResponse::class.java)
                 .let { KodeverdiDto.fromKoderBetydningerResponse(navn, it) }

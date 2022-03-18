@@ -29,20 +29,20 @@ spec:
       rules:
         - application: yrkesskade-melding-api
         - application: yrkesskade-skjema
-
+    outbound:
       external:
         - host: unleash.nais.io
-    { { #each externalHosts}}
-        - host: {{host } }
-        { { #if ports}}
+      {{#each externalHosts}}
+        - host: {{host }}
+          {{#if ports}}
           ports:
-            { { #each ports}}
-            - name: {{name } }
-              port: {{port } }
+            {{#each ports}}
+            - name: {{name }}
+              port: {{port }}
               protocol: {{protocol}}
-        {{/each}}
-        {{/if}}
-    {{/each}}
+            {{/each}}
+          {{/if}}
+      {{/each}}
   tokenx:
     enabled: true
   env:

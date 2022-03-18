@@ -2,5 +2,4 @@ ingresses:
   - "https://yrkesskade-kodeverk.dev.intern.nav.no"
 springProfile: dev
 externalHosts:
-  - host: saf.dev-fss-pub.nais.io
   - host: kodeverk.dev.intern.nav.no

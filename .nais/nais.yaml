@@ -4,7 +4,7 @@ metadata:
   name: yrkesskade-kodeverk
   namespace: yrkesskade
   labels:
-    "team": yrkesskade
+    team: yrkesskade
 spec:
   image: {{image}}
   liveness:
@@ -18,8 +18,8 @@ spec:
     initialDelay: 20
     timeout: 60
   replicas:
-    min: 2
-    max: 2
+    min: 1
+    max: 1
     cpuThresholdPercentage: 50
   prometheus:
     enabled: true
@@ -32,8 +32,17 @@ spec:
     outbound:
       external:
         - host: unleash.nais.io
-  tokenx:
-    enabled: true
+      {{#each externalHosts}}
+        - host: {{host }}
+          {{#if ports}}
+          ports:
+            {{#each ports}}
+            - name: {{name }}
+              port: {{port }}
+              protocol: {{protocol}}
+            {{/each}}
+          {{/if}}
+      {{/each}}
   env:
     - name: SPRING_PROFILES_ACTIVE
       value: {{springProfile}}

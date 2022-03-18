@@ -3,3 +3,4 @@ ingresses:
 springProfile: dev
 externalHosts:
   - host: kodeverk.dev.intern.nav.no
+fss-cluster: dev-fss

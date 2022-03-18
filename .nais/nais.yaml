@@ -29,7 +29,6 @@ spec:
       rules:
         - application: yrkesskade-melding-api
         - application: yrkesskade-skjema
-    outbound:
       external:
         - host: unleash.nais.io
         - host: kodeverk.dev.intern.nav.no

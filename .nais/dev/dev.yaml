@@ -1,3 +1,5 @@
 ingresses:
   - "https://yrkesskade-kodeverk.dev.intern.nav.no"
 springProfile: dev
+externalHosts:
+  - host: kodeverk.dev.intern.nav.no

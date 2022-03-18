@@ -5,6 +5,20 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     url: jdbc:postgresql://localhost:5432/yrkesskade_kodeverk
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+      base-path: /internal
+      path-mapping.prometheus: prometheus
+  metrics:
+    export.prometheus.enabled: true
+    tags:
+      application: ${spring.application.name}
 
 no.nav.security.jwt:
   client:

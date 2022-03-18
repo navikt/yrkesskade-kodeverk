@@ -17,9 +17,9 @@ no.nav.security.jwt:
         token-exchange:
           audience: local
         authentication:
+          client-auth-method: private_key_jwt
           client-id: yrkesskade-kodeverk
           client-jwk: src/test/resources/tokenx/jwk.json
-          client-secret: hemmelig
   issuer:
     tokenx:
       discoveryurl: https://fakedings.dev-gcp.nais.io/fake/.well-known/openid-configuration

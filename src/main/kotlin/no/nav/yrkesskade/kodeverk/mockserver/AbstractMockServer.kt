@@ -7,20 +7,11 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration
 import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer
 import com.github.tomakehurst.wiremock.matching.UrlPattern
 import org.apache.commons.io.IOUtils
-import org.checkerframework.checker.units.qual.K
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Component
-import java.io.UnsupportedEncodingException
-import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
-import java.time.Instant
-import java.util.*
-import java.util.function.Function
-import java.util.stream.Collectors
-import java.util.stream.Collectors.*
-import java.util.stream.Stream
 
 
 fun WireMockServer.stubForGet(urlPattern: UrlPattern, builder: MappingBuilder.() -> Unit) {
@@ -105,19 +96,6 @@ open class AbstractMockSever(private val port: Int?) {
         // Kodeverk
         stubForGet(urlPathMatching("/kodeverk/api/v1/kodeverk/Landkoder/.*")) {
             willReturnJson(hentStringFraFil("kodeverk-land.json"))
-        }
-
-        // Oauth2 token
-        stubForAny(urlPathMatching("/oauth2/v2.0/token")) {
-            val response = String.format(
-                TOKEN_RESPONSE_TEMPLATE,
-                "test_scope",
-                Instant.now().plusSeconds(3600).getEpochSecond(),
-                30,
-                30,
-                "somerandomtoken"
-            )
-            willReturnJson(response)
         }
     }
 

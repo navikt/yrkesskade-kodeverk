@@ -8,23 +8,6 @@ spring:
     username: ${YRKESSKADE_KODEVERK_DB_USERNAME}
     password: ${YRKESSKADE_KODEVERK_DB_PASSWORD}
 
-no.nav.security.jwt:
-  client:
-    registration:
-      kodeverk-oppslag:
-        well-known-url: https://fakedings.dev-gcp.nais.io/fake/.well-known/openid-configuration
-        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
-        token-exchange:
-          audience: local
-        authentication:
-          client-auth-method: private_key_jwt
-          client-id: yrkesskade-kodeverk
-          client-jwk: src/test/resources/tokenx/jwk.json
-  issuer:
-    tokenx:
-      discoveryurl: https://fakedings.dev-gcp.nais.io/fake/.well-known/openid-configuration
-      accepted_audience: local
-
 
 mock:
   enabled: true
@@ -33,7 +16,4 @@ mock:
 api:
   client:
     kodeverk:
-      url: http://localhost:${mock.port}/kodeverk # https://kodeverk.dev.intern.nav.no/
-
-proxy.target.app: dummy
-
+      url: https://kodeverk.dev.intern.nav.no/

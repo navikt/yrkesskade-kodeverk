@@ -114,23 +114,6 @@
             <version>${springdoc-openapi-ui.version}</version>
         </dependency>
 
-        <!-- security -->
-        <dependency>
-            <groupId>no.nav.security</groupId>
-            <artifactId>token-client-spring</artifactId>
-            <version>${token-support.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>no.nav.security</groupId>
-            <artifactId>token-validation-spring</artifactId>
-            <version>${token-support.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>no.nav.security</groupId>
-            <artifactId>token-validation-core</artifactId>
-            <version>${token-support.version}</version>
-        </dependency>
-
         <!-- test -->
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
@@ -147,18 +130,6 @@
             <artifactId>postgresql</artifactId>
             <version>1.16.0</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>no.nav.security</groupId>
-            <artifactId>token-validation-test-support</artifactId>
-            <version>${token-support.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.glassfish.hk2</groupId>
-                    <artifactId>hk2</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 

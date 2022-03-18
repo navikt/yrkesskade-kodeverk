@@ -32,6 +32,7 @@ spec:
     outbound:
       external:
         - host: unleash.nais.io
+        - host: kodeverk.dev.intern.nav.no
       {{#each externalHosts}}
         - host: {{host }}
           {{#if ports}}

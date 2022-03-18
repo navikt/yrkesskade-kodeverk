@@ -61,7 +61,7 @@ spec:
   {{/each}}
   gcp:
     sqlInstances:
-      - type: POSTGRES_12
+      - type: POSTGRES_14
         databases:
           - name: yrkesskade-kodeverk-db
             envVarPrefix: YRKESSKADE_KODEVERK_DB

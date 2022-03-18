@@ -22,5 +22,5 @@ mock:
 api:
   client:
     kodeverk:
-      url: https://kodeverk.dev.intern.nav.no/
+      url: https://kodeverk.nais.preprod.local/
 

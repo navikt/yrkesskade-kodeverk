@@ -1,6 +1,5 @@
 package no.nav.yrkesskade.kodeverk.test
 
-import no.nav.yrkesskade.kodeverk.test.TestMockServer
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ApplicationEvent
 import org.springframework.context.ConfigurableApplicationContext

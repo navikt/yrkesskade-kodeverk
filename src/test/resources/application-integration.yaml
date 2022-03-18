@@ -33,8 +33,8 @@ no.nav:
       client:
         registration:
           kodeverk-oppslag:
-            well-known-url: https://fakedings.dev-gcp.nais.io/fake/.well-known/openid-configuration
-            grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+            token-endpoint-url: http://localhost:${mock.port}/oauth2/v2.0/token
+            grant-type: urn:ietf:params:oauth:grant-type:token-exchange
             token-exchange:
               audience: local
             authentication:
@@ -43,7 +43,7 @@ no.nav:
               client-secret: hemmelig
       issuer:
         tokenx:
-          discoveryurl: http://metadata-selvbetjening
+          discoveryurl: http://selvbetjening-metadata
           accepted_audience: aud-localhost
 
 maskinporten.client.enabled: false

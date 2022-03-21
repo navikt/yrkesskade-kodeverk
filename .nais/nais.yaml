@@ -25,6 +25,8 @@ spec:
     enabled: true
     path: "/internal/prometheus"
   azure:
+    application:
+      enabled: true
     sidecar:
       enabled: true
   accessPolicy:

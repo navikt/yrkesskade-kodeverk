@@ -18,5 +18,5 @@ spring:
 api:
   client:
     kodeverk:
-      url: https://yrkesskade-proxy.dev-pub-fss.nais.io/kodeverk/
+      url: https://yrkesskade-proxy.dev-fss-pub.nais.io/kodeverk/
 

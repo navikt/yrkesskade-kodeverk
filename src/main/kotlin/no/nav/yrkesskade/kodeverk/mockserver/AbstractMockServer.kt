@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Component
 import java.nio.charset.StandardCharsets
+import java.time.Instant
 
 
 fun WireMockServer.stubForGet(urlPattern: UrlPattern, builder: MappingBuilder.() -> Unit) {
@@ -96,6 +97,20 @@ open class AbstractMockSever(private val port: Int?) {
         // Kodeverk
         stubForGet(urlPathMatching("/kodeverk/api/v1/kodeverk/Landkoder/.*")) {
             willReturnJson(hentStringFraFil("kodeverk-land.json"))
+        }
+
+        // Oauth2 token
+        stubForAny(urlPathMatching("/oauth2/v2.0/token")) {
+            val response = String.format(
+                TOKEN_RESPONSE_TEMPLATE,
+                "test_scope",
+                Instant.now().plusSeconds(3600).getEpochSecond(),
+                30,
+                30,
+                "somerandomtoken"
+            )
+            System.out.println(response)
+            willReturnJson(response)
         }
     }
 

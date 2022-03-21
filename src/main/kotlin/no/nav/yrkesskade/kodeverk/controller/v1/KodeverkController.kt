@@ -1,5 +1,6 @@
 package no.nav.yrkesskade.kodeverk.controller.v1
 
+import no.nav.security.token.support.core.api.Unprotected
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.*
 import no.nav.yrkesskade.kodeverk.service.KodeverkService
 import org.springframework.http.ResponseEntity
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
+@Unprotected
 @RestController()
 @RequestMapping("/api/v1/kodeverk")
 class KodeverkController(val kodeverkService: KodeverkService) {

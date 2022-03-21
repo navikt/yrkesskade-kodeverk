@@ -30,10 +30,6 @@ spec:
         - application: yrkesskade-melding-api
         - application: yrkesskade-skjema
     outbound:
-      rules:
-        - application: kodeverk
-          namespace: org
-          cluster: {{fss-cluster}}
       external:
         - host: unleash.nais.io
       {{#each externalHosts}}

@@ -1,3 +1,7 @@
+AZURE_APP_JWK: ./src/test/resources/jwks/jwk.json
+AZURE_APP_CLIENT_ID: yrkesskade-kodeverk
+AZURE_OPENID_CONFIG_TOKEN_ENDPOINT:  http://localhost:${mock.port}/oauth2/v2.0/token
+
 spring:
   application.name: yrkesskade-kodeverk
   main:

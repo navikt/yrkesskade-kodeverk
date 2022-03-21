@@ -20,37 +20,25 @@ class KodeverkControllerIT : AbstractIT() {
     lateinit var mvc: MockMvc
 
     @Test
-    fun `hent kodeverk typer - autentisert`() {
-        // gyldig JWT
-        val jwt = mvc.perform(get("/local/jwt")).andReturn().response.contentAsString
-
+    fun `hent kodeverk typer`() {
         mvc.perform(
             get("$KODEVERK_V1/typer")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer $jwt")
         ).andExpect(status().isOk)
 
     }
 
     @Test
-    fun `hent kodeverk kategorier for tidsrom - autentisert`() {
-        // gyldig JWT
-        val jwt = mvc.perform(get("/local/jwt")).andReturn().response.contentAsString
-
+    fun `hent kodeverk kategorier for tidsrom`() {
         mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer $jwt")
         ).andExpect(status().isOk)
 
     }
 
     @Test
-    fun `hent kodeverk verdier for tidsrom og elev kategori - autentisert`() {
-        // gyldig JWT
-        val jwt = mvc.perform(get("/local/jwt")).andReturn().response.contentAsString
-
+    fun `hent kodeverk verdier for tidsrom og elev kategori`() {
         mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier/elev/kodeverdier")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer $jwt")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdier").isArray)
             .andExpect(jsonPath("$.kodeverdier.length()").value(9))
@@ -58,13 +46,9 @@ class KodeverkControllerIT : AbstractIT() {
     }
 
     @Test
-    fun `hent kodeverk verdier for tidsrom og arbeidstaker kategori - autentisert`() {
-        // gyldig JWT
-        val jwt = mvc.perform(get("/local/jwt")).andReturn().response.contentAsString
-
+    fun `hent kodeverk verdier for tidsrom og arbeidstaker kategori`() {
         mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier/arbeidstaker/kodeverdier")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer $jwt")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdier.length()").value(9))
 
@@ -74,26 +58,18 @@ class KodeverkControllerIT : AbstractIT() {
      *  Militær har to ekstra koder i tillegg til standard skjema
      */
     @Test
-    fun `hent kodeverk verdier for tidsrom og militær kategori - autentisert`() {
-        // gyldig JWT
-        val jwt = mvc.perform(get("/local/jwt")).andReturn().response.contentAsString
-
+    fun `hent kodeverk verdier for tidsrom og militær kategori`() {
         mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier/militær/kodeverdier")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer $jwt")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdier.length()").value(11))
 
     }
 
     @Test
-    fun `hent landkoder - autentisert`() {
-        // gyldig JWT
-        val jwt = mvc.perform(get("/local/jwt")).andReturn().response.contentAsString
-
+    fun `hent landkoder`() {
         mvc.perform(
             get("$KODEVERK_V1/typer/landkoder/kategorier/arbeidstaker/kodeverdier")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer $jwt")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdier.length()").value(4))
 

@@ -1,6 +1,6 @@
 package no.nav.yrkesskade.kodeverk.test
 
-import no.nav.yrkesskade.kodeverk.mockserver.AbstractMockSever
+import no.nav.yrkesskade.kodeverk.mockserver.AbstractMockServer
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.stereotype.Component
 
@@ -10,4 +10,4 @@ import org.springframework.stereotype.Component
     havingValue = "true",
     matchIfMissing = false
 )
-class TestMockServer() : AbstractMockSever(null)
+class TestMockServer() : AbstractMockServer(null)

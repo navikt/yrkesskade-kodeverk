@@ -4,7 +4,11 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import no.nav.security.token.support.client.core.oauth2.OAuth2AccessTokenService
 import no.nav.security.token.support.client.spring.ClientConfigurationProperties
-import no.nav.yrkesskade.kodeverk.*
+import no.nav.yrkesskade.kodeverk.CONSUMER_ID
+import no.nav.yrkesskade.kodeverk.HEADER_AUTHORIZATION
+import no.nav.yrkesskade.kodeverk.HEADER_NAV_CALL_ID
+import no.nav.yrkesskade.kodeverk.HEADER_NAV_CONSUMER_ID
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeStreng
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiDto
 import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.api.GetKodeverkKoderBetydningerResponse
 import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.exception.ClientException
@@ -29,7 +33,7 @@ class KodeverkClient(
     private val objectMapper = jacksonObjectMapper().registerModule(JavaTimeModule())
 
     @Cacheable
-    fun hentKodeverkVerdier(eksternNavn: String?): List<KodeverdiDto> {
+    fun hentKodeverkVerdier(eksternNavn: String?): Map<KodeStreng, KodeverdiDto> {
         return hentKodeverkBetydning(eksternNavn!!, ekskluderUgyldige = true)
     }
 
@@ -46,7 +50,7 @@ class KodeverkClient(
     }
 
     @Suppress("SameParameterValue")
-    private fun hentKodeverkBetydning(navn: String, ekskluderUgyldige: Boolean): List<KodeverdiDto> {
+    private fun hentKodeverkBetydning(navn: String, ekskluderUgyldige: Boolean): Map<KodeStreng, KodeverdiDto> {
         buildRequest("api/v1/kodeverk/$navn/koder/betydninger", ekskluderUgyldige).get().use { response ->
             val responseBody = response.readEntity(String::class.java)
             if (SUCCESSFUL != response.statusInfo.family) {

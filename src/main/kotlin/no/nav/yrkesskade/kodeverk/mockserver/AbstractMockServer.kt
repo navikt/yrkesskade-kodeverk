@@ -39,7 +39,7 @@ fun MappingBuilder.willReturnJson(body: String) {
     matchIfMissing = false
 )
 @Profile("local")
-class MockServer(@Value("\${mock.port}") private val port: Int) : AbstractMockSever(port) {
+class MockServer(@Value("\${mock.port}") private val port: Int) : AbstractMockServer(port) {
 
     init {
         start()
@@ -49,7 +49,7 @@ class MockServer(@Value("\${mock.port}") private val port: Int) : AbstractMockSe
 
 
 
-open class AbstractMockSever(private val port: Int?) {
+open class AbstractMockServer(private val port: Int?) {
 
     private val TOKEN_RESPONSE_TEMPLATE = """{
             "token_type": "Bearer",
@@ -116,7 +116,7 @@ open class AbstractMockSever(private val port: Int?) {
 
     private fun hentStringFraFil(filnavn: String): String {
         return IOUtils.toString(
-            AbstractMockSever::class.java.classLoader.getResourceAsStream("mock/$filnavn"),
+            AbstractMockServer::class.java.classLoader.getResourceAsStream("mock/$filnavn"),
             StandardCharsets.UTF_8
         )
     }

@@ -3,4 +3,3 @@ ingresses:
 springProfile: dev
 externalHosts:
   - host: yrkesskade-proxy.dev-fss-pub.nais.io
-fss-cluster: dev-fss

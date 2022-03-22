@@ -53,11 +53,21 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk verdier for tidsrom og arbeidstaker kategori`() {
-        mvc.perform(
+        val resultActions = mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier/arbeidstaker/kodeverdier")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierMap.length()").value(9))
 
+        val json = resultActions.andReturn().response.contentAsString
+        val responsDto = objectMapper.readValue(json, KodeverdiResponsDto::class.java)
+        val kodeverdierMap = responsDto.kodeverdierMap
+        assertThat(kodeverdierMap).isNotEmpty
+
+        val iAvtaltArbeidstid = kodeverdierMap["iAvtaltArbeidstid"]
+        assertThat(iAvtaltArbeidstid?.kode).isEqualTo("iAvtaltArbeidstid")
+        assertThat(iAvtaltArbeidstid?.spraak).isEqualTo("nb")
+        assertThat(iAvtaltArbeidstid?.verdi).isEqualTo("I avtalt arbeidstid")
+        assertThat(iAvtaltArbeidstid?.sortering).isEqualTo(0)
     }
 
     /**

@@ -7,7 +7,7 @@ INSERT INTO kategori VALUES (2, 'elev', 'Elev/Studen');
 
 INSERT INTO type (type_id, navn, beskrivelse) VALUES (0, 'tidsrom', 'Tidsrom for når en skade skjedde');
 INSERT INTO type (type_id, navn, beskrivelse) VALUES (1, 'alvorlighetsgrad', 'Alvorlighetsgrad');
-INSERT INTO type VALUES (50, 'landkoder', 'Landkoder', true, 'Landkoder');
+INSERT INTO type VALUES (50, 'landkoder', 'Landkoder', true, 'LandkoderISO2');
 
 INSERT INTO kategori_type VALUES (0,0);
 INSERT INTO kategori_type VALUES (0,1);

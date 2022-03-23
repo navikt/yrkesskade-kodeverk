@@ -1,5 +1,6 @@
 package no.nav.yrkesskade.kodeverk.service
 
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeStreng
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiDto
 import no.nav.yrkesskade.kodeverk.error.ManglendeDataException
 import no.nav.yrkesskade.kodeverk.model.Kodekategori
@@ -21,7 +22,7 @@ class KodeverkService(
 
     fun hentKodetyper(): MutableList<Kodetype> = kodetypeRepository.findAll()
 
-    fun hentKodeverdiForTypeOgKategori(typenavn: String, kategorinavn: String): List<KodeverdiDto> {
+    fun hentKodeverdiForTypeOgKategori(typenavn: String, kategorinavn: String): Map<KodeStreng, KodeverdiDto> {
         val example: Example<Kodetype> = Example.of(Kodetype(null, typenavn, null, null, null, null))
         val kodetype = kodetypeRepository.findOne(example)
 
@@ -34,12 +35,12 @@ class KodeverkService(
 
         return kodetype.map { type ->
             kodekategori.map { kategori ->
-                kodeverdiRepository.hentKodeverdiForTypeOgKategori(type.typeId!!, kategori.kategoriId!!).map { kodeverdi ->
-                    KodeverdiDto.konverter(kodeverdi)
+                kodeverdiRepository.hentKodeverdiForTypeOgKategori(type.typeId!!, kategori.kategoriId!!).map { verdi ->
+                    KodeverdiDto.konverter(verdi)
                 }
             }.orElseThrow{ ManglendeDataException("Kunne ikke hente kodeverdier for type $typenavn og kategori $kategorinavn. Fant ingen kategori med navn $kategorinavn!") }
         }.orElseThrow { ManglendeDataException("Kunne ikke hente kodeverdier for type $typenavn og kategori $kategorinavn. Fant ingen kodetype med navn $typenavn!") }
-
+        .associateBy { it.kode }
     }
 
     fun hentKategorierForType(typenavn: String): List<Kodekategori> {

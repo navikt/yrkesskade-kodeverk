@@ -16,26 +16,22 @@ class KodeverkController(val kodeverkService: KodeverkService) {
 
     @GetMapping("/typer")
     fun hentKodeverktyper(): ResponseEntity<KodetypeResponsDto> {
-        val kodeverktyper = kodeverkService.hentKodetyper().map {
-            KodetypeDto.konverter(it)
-        }
-
+        val kodeverktyper = kodeverkService.hentKodetyper()
         return ResponseEntity.ok(KodetypeResponsDto(kodeverktyper))
     }
 
     @GetMapping("/typer/{typenavn}/kategorier")
     fun hentKodeverkkategorier(@PathVariable("typenavn") typenavn: String): ResponseEntity<KodekategoriResponsDto> {
-        val kategorier = kodeverkService.hentKategorierForType(typenavn).map {
-            KodekategoriDto.konverter(it)
-        }
-
+        val kategorier = kodeverkService.hentKategorierForType(typenavn)
         return ResponseEntity.ok(KodekategoriResponsDto(kategorier))
     }
 
     @GetMapping("/typer/{typenavn}/kategorier/{kategorinavn}/kodeverdier")
-    fun hentKodeverdiForTypeOgKategori(@PathVariable("typenavn") typenavn: String, @PathVariable("kategorinavn") kategorinavn: String): ResponseEntity<KodeverdiResponsDto> {
+    fun hentKodeverdiForTypeOgKategori(
+        @PathVariable("typenavn") typenavn: String,
+        @PathVariable("kategorinavn") kategorinavn: String
+    ): ResponseEntity<KodeverdiResponsDto> {
         val kodeverdier = kodeverkService.hentKodeverdiForTypeOgKategori(typenavn, kategorinavn)
-
         return ResponseEntity.ok(KodeverdiResponsDto(kodeverdier))
     }
 }

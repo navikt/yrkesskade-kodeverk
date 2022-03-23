@@ -1,6 +1,5 @@
 package no.nav.yrkesskade.kodeverk.model
 
-import org.springframework.data.annotation.Transient
 import java.io.Serializable
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -17,7 +16,5 @@ class KodeverdiId(
 data class Kodeverdi (
     @Id val kode: String = "",
     @Id val spraak: String = "nb",
-    val verdi: String = "",
-    @Transient
-    val sortering: Int?
+    val verdi: String = ""
 )

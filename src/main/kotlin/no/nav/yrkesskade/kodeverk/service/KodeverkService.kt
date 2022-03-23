@@ -35,8 +35,8 @@ class KodeverkService(
 
         return kodetype.map { type ->
             kodekategori.map { kategori ->
-                kodeverdiRepository.hentKodeverdiForTypeOgKategori(type.typeId!!, kategori.kategoriId!!).map { kodeverdi ->
-                    KodeverdiDto.konverter(kodeverdi)
+                kodeverdiRepository.hentKodeverdiForTypeOgKategori(type.typeId!!, kategori.kategoriId!!).map { verdi ->
+                    KodeverdiDto.konverter(verdi)
                 }
             }.orElseThrow{ ManglendeDataException("Kunne ikke hente kodeverdier for type $typenavn og kategori $kategorinavn. Fant ingen kategori med navn $kategorinavn!") }
         }.orElseThrow { ManglendeDataException("Kunne ikke hente kodeverdier for type $typenavn og kategori $kategorinavn. Fant ingen kodetype med navn $typenavn!") }

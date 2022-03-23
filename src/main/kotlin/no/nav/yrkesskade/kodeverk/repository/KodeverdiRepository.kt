@@ -6,6 +6,14 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 
+interface Verdi {
+    fun getKode(): String
+    fun getSpraak(): String
+    fun getVerdi(): String
+    fun getSortering(): Int?
+}
+
+
 interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
     @Query(
         value = """
@@ -27,5 +35,5 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
     fun hentKodeverdiForTypeOgKategori(
         @Param("typeId") typeId: Int,
         @Param("kategoriId") kategoriId: Int
-    ): List<Kodeverdi>
+    ): List<Verdi>
 }

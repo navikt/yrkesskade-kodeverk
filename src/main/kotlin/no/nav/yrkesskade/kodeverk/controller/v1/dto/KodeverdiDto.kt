@@ -17,14 +17,14 @@ data class KodeverdiDto(val kode: String, val spraak: String, val verdi: String,
                 .associateBy { it.kode }
         }
 
-        private fun fromBetydninger(koder: List<Kodemapper>): List<KodeverdiDto> {
-             return koder.map {
-                it.betydninger.map {
-                    betydning -> betydning.beskrivelser.entries.map {
-                        beskrivelse -> KodeverdiDto(it.kode, beskrivelse.key, beskrivelse.value.tekst!!, null)
+       private fun fromBetydninger(koder: List<Kodemapper>): List<KodeverdiDto> {
+            return koder.flatMap {
+                it.betydninger.flatMap { betydning ->
+                    betydning.beskrivelser.entries.map { beskrivelse ->
+                        KodeverdiDto(it.kode, beskrivelse.key, beskrivelse.value.tekst!!, null)
+                    }
                 }
-                }.flatten()
-            }.flatten()
+            }
         }
     }
 }

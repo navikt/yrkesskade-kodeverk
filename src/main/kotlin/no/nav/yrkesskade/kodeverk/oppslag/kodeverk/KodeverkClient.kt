@@ -33,8 +33,8 @@ class KodeverkClient(
     private val objectMapper = jacksonObjectMapper().registerModule(JavaTimeModule())
 
     @Cacheable
-    fun hentKodeverkVerdier(eksternNavn: String?): Map<KodeStreng, KodeverdiDto> {
-        return hentKodeverkBetydning(eksternNavn!!, ekskluderUgyldige = true)
+    fun hentKodeverkVerdier(eksternNavn: String): Map<KodeStreng, KodeverdiDto> {
+        return hentKodeverkBetydning(eksternNavn, ekskluderUgyldige = true)
     }
 
     private fun buildRequest(path: String, eksluderUgyldige: Boolean): Invocation.Builder {
@@ -57,7 +57,7 @@ class KodeverkClient(
                 throw ClientException("Kunne ikke hente kodeverk $navn", response.location.toString(), response.status, responseBody)
             }
             return objectMapper.readValue(responseBody, GetKodeverkKoderBetydningerResponse::class.java)
-                .let { KodeverdiDto.fromKoderBetydningerResponse(navn, it) }
+                .let { KodeverdiDto.fromKoderBetydningerResponse(it) }
         }
     }
 

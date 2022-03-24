@@ -1,0 +1,5 @@
+ingresses:
+  - https://yrkesskade-kodeverk.intern.nav.no
+springProfile: prod
+externalHosts:
+  - host: yrkesskade-proxy.prod-fss-pub.nais.io

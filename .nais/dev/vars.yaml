@@ -1,5 +1,5 @@
 ingresses:
-  - "https://yrkesskade-kodeverk.dev.intern.nav.no"
+  - https://yrkesskade-kodeverk.dev.intern.nav.no
 springProfile: dev
 externalHosts:
   - host: yrkesskade-proxy.dev-fss-pub.nais.io

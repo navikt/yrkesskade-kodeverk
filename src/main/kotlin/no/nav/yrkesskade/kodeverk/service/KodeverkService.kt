@@ -42,6 +42,7 @@ class KodeverkService(
         return kodeverdiRepository
             .hentKodeverdiForTypeOgKategori(kodetype.typeId!!, kodekategori.kategoriId!!)
             .map { kodeverdi -> KodeverdiDto.konverter(kodeverdi) }
+            .associateBy { it.kode }
     }
 
     fun hentKategorierForType(typenavn: String): List<KodekategoriDto> {

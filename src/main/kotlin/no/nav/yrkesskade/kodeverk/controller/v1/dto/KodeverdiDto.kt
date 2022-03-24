@@ -9,7 +9,7 @@ data class KodeverdiDto(val kode: String, val spraak: String, val verdi: String,
     companion object {
         fun konverter(verdi: Verdi): KodeverdiDto = KodeverdiDto(verdi.getKode(), verdi.getSpraak(), verdi.getVerdi(), verdi.getSortering())
 
-        fun fromKoderBetydningerResponse(navn: String, response: GetKodeverkKoderBetydningerResponse): Map<KodeStreng, KodeverdiDto> {
+        fun fromKoderBetydningerResponse(response: GetKodeverkKoderBetydningerResponse): Map<KodeStreng, KodeverdiDto> {
             return response.betydninger
                 .entries
                 .map { Kodemapper(it.key, it.value) }

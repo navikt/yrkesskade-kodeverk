@@ -1,0 +1,1 @@
+INSERT INTO type VALUES (60, 'landkoderISO2', 'Landkoder', true, 'LandkoderISO2');

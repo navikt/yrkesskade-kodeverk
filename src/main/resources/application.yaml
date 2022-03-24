@@ -5,6 +5,8 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     url: jdbc:postgresql://localhost:5432/yrkesskade_kodeverk
+  flyway:
+    out-of-order: true
 management:
   endpoint:
     health:
@@ -19,6 +21,7 @@ management:
     export.prometheus.enabled: true
     tags:
       application: ${spring.application.name}
+
 
 no.nav.security.jwt:
   client:

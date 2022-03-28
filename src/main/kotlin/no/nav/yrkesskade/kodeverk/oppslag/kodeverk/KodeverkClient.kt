@@ -12,6 +12,7 @@ import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeStreng
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiDto
 import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.api.GetKodeverkKoderBetydningerResponse
 import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.exception.ClientException
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Component
@@ -28,6 +29,10 @@ class KodeverkClient(
     private val clientConfigurationProperties: ClientConfigurationProperties,
     private val oAuth2AccessTokenService: OAuth2AccessTokenService
 ) {
+    companion object {
+        @Suppress("JAVA_CLASS_ON_COMPANION")
+        private val log = LoggerFactory.getLogger(javaClass.enclosingClass)
+    }
 
     private val client: Client = ClientBuilder.newClient()
     private val objectMapper = jacksonObjectMapper().registerModule(JavaTimeModule())
@@ -51,10 +56,16 @@ class KodeverkClient(
 
     @Suppress("SameParameterValue")
     private fun hentKodeverkBetydning(navn: String, ekskluderUgyldige: Boolean): Map<KodeStreng, KodeverdiDto> {
+        log.info("hentKodeverkBetydning: navn=$navn, ekskluderUgyldige=$ekskluderUgyldige")
         buildRequest("api/v1/kodeverk/$navn/koder/betydninger", ekskluderUgyldige).get().use { response ->
             val responseBody = response.readEntity(String::class.java)
+
+            val json = jacksonObjectMapper().writeValueAsString(response)
+            log.info(json)
+
             if (SUCCESSFUL != response.statusInfo.family) {
-                throw ClientException("Kunne ikke hente kodeverk $navn", response.location.toString(), response.status, responseBody)
+                val endpoint = "$kodeServiceUri/api/v1/kodeverk/$navn/koder/betydninger?osv..."
+                throw ClientException("Kunne ikke hente kodeverk $navn", endpoint, response.status, responseBody)
             }
             return objectMapper.readValue(responseBody, GetKodeverkKoderBetydningerResponse::class.java)
                 .let { KodeverdiDto.fromKoderBetydningerResponse(it) }

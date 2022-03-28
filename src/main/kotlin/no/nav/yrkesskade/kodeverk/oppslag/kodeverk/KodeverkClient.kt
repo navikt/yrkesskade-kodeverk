@@ -59,9 +59,7 @@ class KodeverkClient(
         log.info("hentKodeverkBetydning: navn=$navn, ekskluderUgyldige=$ekskluderUgyldige")
         buildRequest("api/v1/kodeverk/$navn/koder/betydninger", ekskluderUgyldige).get().use { response ->
             val responseBody = response.readEntity(String::class.java)
-
-            val json = jacksonObjectMapper().writeValueAsString(response)
-            log.info(json)
+            log.info(responseBody)
 
             if (SUCCESSFUL != response.statusInfo.family) {
                 val endpoint = "$kodeServiceUri/api/v1/kodeverk/$navn/koder/betydninger?osv..."

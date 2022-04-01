@@ -24,7 +24,7 @@ class KodeverkService(
 
     fun hentKodetyper(): List<KodetypeDto> = kodetypeRepository.findAll().map { KodetypeDto.konverter(it) }
 
-    fun hentKodeverdiForTypeOgKategori(typenavn: String, kategorinavn: String): List<KodeverdiDto> {
+    fun hentKodeverdiForTypeOgKategori(typenavn: String, kategorinavn: String): Map<KodeStreng, KodeverdiDto> {
         val example: Example<Kodetype> = Example.of(Kodetype(null, typenavn, null, null, null, null))
         val kodetype = kodetypeRepository.findOne(example).orElseThrow {
             ManglendeDataException("Kunne ikke hente kodeverdier for type $typenavn og kategori $kategorinavn. Fant ingen kodetype med navn $typenavn!")
@@ -42,6 +42,7 @@ class KodeverkService(
         return kodeverdiRepository
             .hentKodeverdiForTypeOgKategori(kodetype.typeId!!, kodekategori.kategoriId!!)
             .map { kodeverdi -> KodeverdiDto.konverter(kodeverdi) }
+            .associateBy { it.kode }
     }
 
     fun hentKategorierForType(typenavn: String): List<KodekategoriDto> {

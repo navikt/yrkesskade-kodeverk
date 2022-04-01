@@ -2,7 +2,6 @@ package no.nav.yrkesskade.kodeverk.controller.v1
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiListeResponsDto
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiResponsDto
 import no.nav.yrkesskade.kodeverk.test.AbstractIT
 import no.nav.yrkesskade.kodeverk.test.TestMockServerInitialization
@@ -43,30 +42,13 @@ class KodeverkControllerIT : AbstractIT() {
     }
 
     @Test
-    fun `hent map med kodeverk verdier for tidsrom og elev kategori`() {
+    fun `hent kodeverk verdier for tidsrom og elev kategori`() {
         mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier/elev/kodeverdier")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierMap").isMap)
             .andExpect(jsonPath("$.kodeverdierMap.length()").value(9))
 
-    }
-
-    @Test
-    fun `hent liste med kodeverk verdier for tidsrom og elev kategori`() {
-        val resultActions = mvc.perform(
-            get("$KODEVERK_V1/typer/tidsrom/kategorier/elev/kodeverdierliste")
-        ).andExpect(status().isOk)
-            .andExpect(jsonPath("$.kodeverdierListe").isArray)
-            .andExpect(jsonPath("$.kodeverdierListe.length()").value(9))
-
-        val json = resultActions.andReturn().response.contentAsString
-        val responsDto = objectMapper.readValue(json, KodeverdiListeResponsDto::class.java)
-        val kodeverdierListe = responsDto.kodeverdierListe
-        assertThat(kodeverdierListe.size).isEqualTo(9)
-        val elementA = kodeverdierListe[0]
-        val elementB = kodeverdierListe[1]
-        assertThat(elementA.verdi).isLessThan(elementB.verdi) // sortert alfabetisk på verdi
     }
 
     @Test
@@ -83,7 +65,9 @@ class KodeverkControllerIT : AbstractIT() {
 
         val iAvtaltArbeidstid = kodeverdierMap["iAvtaltArbeidstid"]
         assertThat(iAvtaltArbeidstid?.kode).isEqualTo("iAvtaltArbeidstid")
+        assertThat(iAvtaltArbeidstid?.spraak).isEqualTo("nb")
         assertThat(iAvtaltArbeidstid?.verdi).isEqualTo("I avtalt arbeidstid")
+        assertThat(iAvtaltArbeidstid?.sortering).isEqualTo(0)
     }
 
     /**
@@ -112,6 +96,7 @@ class KodeverkControllerIT : AbstractIT() {
 
         val norge = kodeverdierMap["NOR"]
         assertThat(norge?.kode).isEqualTo("NOR")
+        assertThat(norge?.spraak).isEqualTo("nb")
         assertThat(norge?.verdi).isEqualTo("NORGE")
     }
 

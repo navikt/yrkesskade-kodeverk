@@ -33,7 +33,7 @@ class KodeverkClient(
     private val objectMapper = jacksonObjectMapper().registerModule(JavaTimeModule())
 
     @Cacheable
-    fun hentKodeverkVerdier(eksternNavn: String): Map<KodeStreng, KodeverdiDto> {
+    fun hentKodeverkVerdier(eksternNavn: String): List<KodeverdiDto> {
         return hentKodeverkBetydning(eksternNavn, ekskluderUgyldige = true)
     }
 
@@ -50,7 +50,7 @@ class KodeverkClient(
     }
 
     @Suppress("SameParameterValue")
-    private fun hentKodeverkBetydning(navn: String, ekskluderUgyldige: Boolean): Map<KodeStreng, KodeverdiDto> {
+    private fun hentKodeverkBetydning(navn: String, ekskluderUgyldige: Boolean): List<KodeverdiDto> {
         buildRequest("api/v1/kodeverk/$navn/koder/betydninger", ekskluderUgyldige).get().use { response ->
             val responseBody = response.readEntity(String::class.java)
             if (SUCCESSFUL != response.statusInfo.family) {

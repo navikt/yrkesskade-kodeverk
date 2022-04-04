@@ -39,6 +39,7 @@ class KodeverkControllerIT : AbstractIT() {
         mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier")
         ).andExpect(status().isOk)
+            .andExpect(jsonPath("$.kategorier.length()").value(4))
 
     }
 
@@ -48,7 +49,7 @@ class KodeverkControllerIT : AbstractIT() {
             get("$KODEVERK_V1/typer/tidsrom/kategorier/elev/kodeverdier")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierMap").isMap)
-            .andExpect(jsonPath("$.kodeverdierMap.length()").value(9))
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(5))
 
     }
 
@@ -94,7 +95,7 @@ class KodeverkControllerIT : AbstractIT() {
         mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier/militær/kodeverdier")
         ).andExpect(status().isOk)
-            .andExpect(jsonPath("$.kodeverdierMap.length()").value(11))
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(0))
 
     }
 

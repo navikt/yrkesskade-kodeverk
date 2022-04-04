@@ -26,7 +26,7 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('brann',                                          0, 3, '2022-03-15', null, 1000);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('truslerOmVold',                                  0, 3, '2022-03-15', null, 1700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('paafoertVoldsskade',                             0, 3, '2022-03-15', null, 1600);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('druktnetEllerBegravdEllerOmsvoept',              0, 3, '2022-03-15', null, 900);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('druknetEllerBegravdEllerOmsvoept',               0, 3, '2022-03-15', null, 900);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('fysiskEllerPsykiskBelastning',                   0, 3, '2022-03-15', null, 1800);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('alternativenePasserIkke',                        0, 3, '2022-03-15', null, 1900);
 
@@ -47,7 +47,7 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('brann',                                          3, 3, '2022-03-29', null, 1000);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('truslerOmVold',                                  3, 3, '2022-03-29', null, 1700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('paafoertVoldsskade',                             3, 3, '2022-03-29', null, 1600);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('druktnetEllerBegravdEllerOmsvoept',              3, 3, '2022-03-29', null, 900);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('druknetEllerBegravdEllerOmsvoept',               3, 3, '2022-03-29', null, 900);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('fysiskEllerPsykiskBelastning',                   3, 3, '2022-03-29', null, 1800);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('alternativenePasserIkke',                        3, 3, '2022-03-29', null, 1900);
 
@@ -68,7 +68,7 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('brann',                                          2, 3, '2022-04-01', null, 1000);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('truslerOmVold',                                  2, 3, '2022-04-01', null, 1700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('paafoertVoldsskade',                             2, 3, '2022-04-01', null, 1600);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('druktnetEllerBegravdEllerOmsvoept',              2, 3, '2022-04-01', null, 900);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('druknetEllerBegravdEllerOmsvoept',               2, 3, '2022-04-01', null, 900);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('fysiskEllerPsykiskBelastning',                   2, 3, '2022-04-01', null, 1800);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('alternativenePasserIkke',                        2, 3, '2022-04-01', null, 1900);
 
@@ -89,5 +89,5 @@ INSERT INTO verdi (kode, spraak, verdi) VALUES ('eksplosjonEllerSprenging',     
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('brann',                                          'nb', 'Brann');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('truslerOmVold',                                  'nb', 'Trusler om vold');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('paafoertVoldsskade',                             'nb', 'Påført voldsskade');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('druktnetEllerBegravdEllerOmsvoept',              'nb', 'Druknet, begravd, omsvøpt');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('druknetEllerBegravdEllerOmsvoept',               'nb', 'Druknet, begravd, omsvøpt');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('fysiskEllerPsykiskBelastning',                   'nb', 'Fysisk eller psykisk belastning');

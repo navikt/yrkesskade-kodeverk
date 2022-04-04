@@ -1,5 +1,5 @@
 -- Ny type
-INSERT INTO type (type_id, navn, beskrivelse) VALUES (5, 'skadetype', 'Hva slag skade er det');
+INSERT INTO type (type_id, navn, beskrivelse) VALUES (5, 'skadetype', 'Hva slags skade er det');
 
 -- Kategori Arbeidstaker / Type 'Hva slag skade er det'
 INSERT INTO kategori_type (kategori_id, type_id) VALUES (0, 5);
@@ -18,12 +18,12 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('varmeskade',              0, 5, '2022-03-15', null, 900);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('kuldeskade',              0, 5, '2022-03-15', null, 800);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('etsing',                  0, 5, '2022-03-15', null, 1000);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('akuttForgifning',         0, 5, '2022-03-15', null, 1100);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('akuttForgiftning',        0, 5, '2022-03-15', null, 1100);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('psykiskeEttervirkninger', 0, 5, '2022-03-15', null, 1600);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('indreSkade',              0, 5, '2022-03-15', null, 700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('akustiskSjokk',           0, 5, '2022-03-15', null, 1300);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('oeyeskade',               0, 5, '2022-03-15', null, 1200);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('knusningsSkade',          0, 5, '2022-03-15', null, 500);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('knusningsskade',          0, 5, '2022-03-15', null, 500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('traumatiskSjokk',         0, 5, '2022-03-15', null, 1500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('sjokkEtterAggresjon',     0, 5, '2022-03-15', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('infeksjon',               0, 5, '2022-03-15', null, 1700);
@@ -39,12 +39,12 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('varmeskade',              3, 5, '2022-03-29', null, 900);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('kuldeskade',              3, 5, '2022-03-29', null, 800);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('etsing',                  3, 5, '2022-03-29', null, 1000);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('akuttForgifning',         3, 5, '2022-03-29', null, 1100);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('akuttForgiftning',        3, 5, '2022-03-29', null, 1100);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('psykiskeEttervirkninger', 3, 5, '2022-03-29', null, 1600);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('indreSkade',              3, 5, '2022-03-29', null, 700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('akustiskSjokk',           3, 5, '2022-03-29', null, 1300);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('oeyeskade',               3, 5, '2022-03-29', null, 1200);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('knusningsSkade',          3, 5, '2022-03-29', null, 500);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('knusningsskade',          3, 5, '2022-03-29', null, 500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('traumatiskSjokk',         3, 5, '2022-03-29', null, 1500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('sjokkEtterAggresjon',     3, 5, '2022-03-29', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('infeksjon',               3, 5, '2022-03-29', null, 1700);
@@ -60,12 +60,12 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('varmeskade',              2, 5, '2022-04-01', null, 900);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('kuldeskade',              2, 5, '2022-04-01', null, 800);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('etsing',                  2, 5, '2022-04-01', null, 1000);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('akuttForgifning',         2, 5, '2022-04-01', null, 1100);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('akuttForgiftning',        2, 5, '2022-04-01', null, 1100);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('psykiskeEttervirkninger', 2, 5, '2022-04-01', null, 1600);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('indreSkade',              2, 5, '2022-04-01', null, 700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('akustiskSjokk',           2, 5, '2022-04-01', null, 1300);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('oeyeskade',               2, 5, '2022-04-01', null, 1200);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('knusningsSkade',          2, 5, '2022-04-01', null, 500);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('knusningsskade',          2, 5, '2022-04-01', null, 500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('traumatiskSjokk',         2, 5, '2022-04-01', null, 1500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('sjokkEtterAggresjon',     2, 5, '2022-04-01', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('infeksjon',               2, 5, '2022-04-01', null, 1700);
@@ -81,12 +81,12 @@ INSERT INTO verdi (kode, spraak, verdi) VALUES ('bruddskade',              'nb',
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('varmeskade',              'nb', 'Varmeskade');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('kuldeskade',              'nb', 'Kuldeskade');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('etsing',                  'nb', 'Etsing');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('akuttForgifning',         'nb', 'Akutt forgiftning');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('akuttForgiftning',        'nb', 'Akutt forgiftning');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('psykiskeEttervirkninger', 'nb', 'Psykiske ettervirkninger');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('indreSkade',              'nb', 'Indre skade');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('akustiskSjokk',           'nb', 'Akustisk sjokk');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('oeyeskade',               'nb', 'Øyeskade');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('knusningsSkade',          'nb', 'Knusningsskade');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('knusningsskade',          'nb', 'Knusningsskade');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('traumatiskSjokk',         'nb', 'Traumatisk sjokk');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('sjokkEtterAggresjon',     'nb', 'Sjokk etter aggresjon');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('infeksjon',               'nb', 'Infeksjon');

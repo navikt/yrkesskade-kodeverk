@@ -29,7 +29,7 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('fordoeyelsesorgan',            0, 4, '2022-03-15', null, 3700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('nyrerOgUrinveier',             0, 4, '2022-03-15', null, 3800);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('venstreSkulder',               0, 4, '2022-03-15', null, 1300);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('HoeyreSkulder',                0, 4, '2022-03-15', null, 1400);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('hoeyreSkulder',                0, 4, '2022-03-15', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('venstreArmOgAlbue',            0, 4, '2022-03-15', null, 1500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('hoeyreArmOgAlbue',             0, 4, '2022-03-15', null, 1600);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('venstreHaandledd',             0, 4, '2022-03-15', null, 1700);
@@ -71,7 +71,7 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('fordoeyelsesorgan',            3, 4, '2022-03-29', null, 3700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('nyrerOgUrinveier',             3, 4, '2022-03-29', null, 3800);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('venstreSkulder',               3, 4, '2022-03-29', null, 1300);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('HoeyreSkulder',                3, 4, '2022-03-29', null, 1400);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('hoeyreSkulder',                3, 4, '2022-03-29', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('venstreArmOgAlbue',            3, 4, '2022-03-29', null, 1500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('hoeyreArmOgAlbue',             3, 4, '2022-03-29', null, 1600);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('venstreHaandledd',             3, 4, '2022-03-29', null, 1700);
@@ -113,7 +113,7 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('fordoeyelsesorgan',            2, 4, '2022-04-01', null, 3700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('nyrerOgUrinveier',             2, 4, '2022-04-01', null, 3800);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('venstreSkulder',               2, 4, '2022-04-01', null, 1300);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('HoeyreSkulder',                2, 4, '2022-04-01', null, 1400);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('hoeyreSkulder',                2, 4, '2022-04-01', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('venstreArmOgAlbue',            2, 4, '2022-04-01', null, 1500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('hoeyreArmOgAlbue',             2, 4, '2022-04-01', null, 1600);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('venstreHaandledd',             2, 4, '2022-04-01', null, 1700);
@@ -155,7 +155,7 @@ INSERT INTO verdi (kode, spraak, verdi) VALUES ('mage',                         
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('fordoeyelsesorgan',            'nb', 'Fordøyelsesorgan');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('nyrerOgUrinveier',             'nb', 'Nyrer/urinveier');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('venstreSkulder',               'nb', 'Skulder, venstre');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('HoeyreSkulder',                'nb', 'Skulder, høyre');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('hoeyreSkulder',                'nb', 'Skulder, høyre');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('venstreArmOgAlbue',            'nb', 'Arm/albue, venstre');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('hoeyreArmOgAlbue',             'nb', 'Arm/albue, høyre');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('venstreHaandledd',             'nb', 'Håndledd, venstre');

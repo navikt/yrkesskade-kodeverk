@@ -23,4 +23,4 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 -- Verdier for type 'Har den skadelidte hatt fravær'
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('fravaersdagerUkjent', 'nb', 'Fraværsdager ukjent');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('treDagerEllerMindre', 'nb', 'Kjent fravær tre dager eller mindre');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('merEnnTreDager',      'nb', 'Kjent fravær mer enn tre dager ');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('merEnnTreDager',      'nb', 'Kjent fravær mer enn tre dager');

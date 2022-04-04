@@ -36,11 +36,44 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for tidsrom`() {
-        mvc.perform(
-            get("$KODEVERK_V1/typer/tidsrom/kategorier")
-        ).andExpect(status().isOk)
-            .andExpect(jsonPath("$.kategorier.length()").value(4))
+        hentKategorierFor("tidsrom", 3)
+    }
 
+    @Test
+    fun `hent kodeverk kategorier for alvorlighetsgrad`() {
+        hentKategorierFor("alvorlighetsgrad", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for Hvor skjedde ulykken`() {
+        hentKategorierFor("hvorSkjeddeUlykken", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for Årsak og bakgrunn`() {
+        hentKategorierFor("aarsakOgBakgrunn", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for Skadet kroppsdel`() {
+        hentKategorierFor("skadetKroppsdel", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for skadetype`() {
+        hentKategorierFor("skadetype", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for Har skadelidt hatt fravær`() {
+        hentKategorierFor("harSkadelidtHattFravaer", 2)
+    }
+
+    private fun hentKategorierFor(typenavn: String, forventetAntall: Int) {
+        mvc.perform(
+            get("$KODEVERK_V1/typer/$typenavn/kategorier")
+        ).andExpect(status().isOk)
+            .andExpect(jsonPath("$.kategorier.length()").value(forventetAntall))
     }
 
     @Test
@@ -97,6 +130,14 @@ class KodeverkControllerIT : AbstractIT() {
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierMap.length()").value(0))
 
+    }
+
+    @Test
+    fun `hent kodeverk verdier for skadetype og arbeidstaker kategori`() {
+        mvc.perform(
+            get("$KODEVERK_V1/typer/skadetype/kategorier/arbeidstaker/kodeverdier")
+        ).andExpect(status().isOk)
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(19))
     }
 
     @Test

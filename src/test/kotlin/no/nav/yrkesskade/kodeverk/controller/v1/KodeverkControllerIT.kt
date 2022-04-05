@@ -92,12 +92,12 @@ class KodeverkControllerIT : AbstractIT() {
             get("$KODEVERK_V1/typer/tidsrom/kategorier/elev/kodeverdierliste")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierListe").isArray)
-            .andExpect(jsonPath("$.kodeverdierListe.length()").value(9))
+            .andExpect(jsonPath("$.kodeverdierListe.length()").value(5))
 
         val json = resultActions.andReturn().response.contentAsString
         val responsDto = objectMapper.readValue(json, KodeverdiListeResponsDto::class.java)
         val kodeverdierListe = responsDto.kodeverdierListe
-        assertThat(kodeverdierListe.size).isEqualTo(9)
+        assertThat(kodeverdierListe.size).isEqualTo(5)
         val elementA = kodeverdierListe[0]
         val elementB = kodeverdierListe[1]
         assertThat(elementA.verdi).isLessThan(elementB.verdi) // sortert alfabetisk på verdi

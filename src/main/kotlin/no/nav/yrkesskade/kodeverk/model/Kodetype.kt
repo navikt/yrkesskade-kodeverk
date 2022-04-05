@@ -25,8 +25,8 @@ data class Kodetype(
     @ManyToMany
     @JoinTable(
         name = "kategori_type",
-        joinColumns = [JoinColumn(name = "kategori_id")],
-        inverseJoinColumns = [JoinColumn(name = "type_id")]
+        joinColumns = [JoinColumn(name = "type_id")],
+        inverseJoinColumns = [JoinColumn(name = "kategori_id")]
     )
     var kategorier: List<Kodekategori>?
 )

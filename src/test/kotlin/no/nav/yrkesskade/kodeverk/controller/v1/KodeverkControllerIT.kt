@@ -36,10 +36,44 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for tidsrom`() {
-        mvc.perform(
-            get("$KODEVERK_V1/typer/tidsrom/kategorier")
-        ).andExpect(status().isOk)
+        hentKategorierFor("tidsrom", 3)
+    }
 
+    @Test
+    fun `hent kodeverk kategorier for alvorlighetsgrad`() {
+        hentKategorierFor("alvorlighetsgrad", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for Hvor skjedde ulykken`() {
+        hentKategorierFor("hvorSkjeddeUlykken", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for Årsak og bakgrunn`() {
+        hentKategorierFor("aarsakOgBakgrunn", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for Skadet kroppsdel`() {
+        hentKategorierFor("skadetKroppsdel", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for skadetype`() {
+        hentKategorierFor("skadetype", 3)
+    }
+
+    @Test
+    fun `hent kodeverk kategorier for Har skadelidt hatt fravær`() {
+        hentKategorierFor("harSkadelidtHattFravaer", 2)
+    }
+
+    private fun hentKategorierFor(typenavn: String, forventetAntall: Int) {
+        mvc.perform(
+            get("$KODEVERK_V1/typer/$typenavn/kategorier")
+        ).andExpect(status().isOk)
+            .andExpect(jsonPath("$.kategorier.length()").value(forventetAntall))
     }
 
     @Test
@@ -48,7 +82,7 @@ class KodeverkControllerIT : AbstractIT() {
             get("$KODEVERK_V1/typer/tidsrom/kategorier/elev/kodeverdier")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierMap").isMap)
-            .andExpect(jsonPath("$.kodeverdierMap.length()").value(9))
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(5))
 
     }
 
@@ -58,12 +92,12 @@ class KodeverkControllerIT : AbstractIT() {
             get("$KODEVERK_V1/typer/tidsrom/kategorier/elev/kodeverdierliste")
         ).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierListe").isArray)
-            .andExpect(jsonPath("$.kodeverdierListe.length()").value(9))
+            .andExpect(jsonPath("$.kodeverdierListe.length()").value(5))
 
         val json = resultActions.andReturn().response.contentAsString
         val responsDto = objectMapper.readValue(json, KodeverdiListeResponsDto::class.java)
         val kodeverdierListe = responsDto.kodeverdierListe
-        assertThat(kodeverdierListe.size).isEqualTo(9)
+        assertThat(kodeverdierListe.size).isEqualTo(5)
         val elementA = kodeverdierListe[0]
         val elementB = kodeverdierListe[1]
         assertThat(elementA.verdi).isLessThan(elementB.verdi) // sortert alfabetisk på verdi
@@ -94,8 +128,16 @@ class KodeverkControllerIT : AbstractIT() {
         mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier/militær/kodeverdier")
         ).andExpect(status().isOk)
-            .andExpect(jsonPath("$.kodeverdierMap.length()").value(11))
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(0))
 
+    }
+
+    @Test
+    fun `hent kodeverk verdier for skadetype og arbeidstaker kategori`() {
+        mvc.perform(
+            get("$KODEVERK_V1/typer/skadetype/kategorier/arbeidstaker/kodeverdier")
+        ).andExpect(status().isOk)
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(19))
     }
 
     @Test

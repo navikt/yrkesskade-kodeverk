@@ -22,8 +22,8 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('offentligSted',                                         0, 7, '2022-03-15', null, 1300);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('offentligeTransportmidler',                             0, 7, '2022-03-15', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('privateHjem',                                           0, 7, '2022-03-15', null, 1900);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('idrettsområde',                                         0, 7, '2022-03-15', null, 1200);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('iLuftenOverBakkenivaaPaaTakEllerTerasserEllerHeis',     0, 7, '2022-03-15', null, 300);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('idrettsomraade',                                        0, 7, '2022-03-15', null, 1200);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('iLuftenOverBakkenivaaPaaTakEllerTerrasserEllerHeis',    0, 7, '2022-03-15', null, 300);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('iLuftenIFlyEllerHelikopter',                            0, 7, '2022-03-15', null, 1500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('underJordoverflatenIGroeftEllerTunellEllerGruve',       0, 7, '2022-03-15', null, 400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('paaEllerOverVann',                                      0, 7, '2022-03-15', null, 500);
@@ -44,8 +44,8 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('offentligSted',                                         3, 7, '2022-03-29', null, 1300);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('offentligeTransportmidler',                             3, 7, '2022-03-29', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('privateHjem',                                           3, 7, '2022-03-29', null, 1900);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('idrettsområde',                                         3, 7, '2022-03-29', null, 1200);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('iLuftenOverBakkenivaaPaaTakEllerTerasserEllerHeis',     3, 7, '2022-03-29', null, 300);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('idrettsomraade',                                        3, 7, '2022-03-29', null, 1200);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('iLuftenOverBakkenivaaPaaTakEllerTerrasserEllerHeis',    3, 7, '2022-03-29', null, 300);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('iLuftenIFlyEllerHelikopter',                            3, 7, '2022-03-29', null, 1500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('underJordoverflatenIGroeftEllerTunellEllerGruve',       3, 7, '2022-03-29', null, 400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('paaEllerOverVann',                                      3, 7, '2022-03-29', null, 500);
@@ -66,8 +66,8 @@ INSERT INTO verdi (kode, spraak, verdi) VALUES ('helseinstitusjoner',           
 -- INSERT INTO verdi (kode, spraak, verdi) VALUES ('offentligSted',                                         'nb', 'Offentlig sted');   -- koden offentligSted er allerede definert
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('offentligeTransportmidler',                             'nb', 'Offentlige transportmidler');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('privateHjem',                                           'nb', 'Private hjem');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('idrettsområde',                                         'nb', 'Idrettsområde');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('iLuftenOverBakkenivaaPaaTakEllerTerasserEllerHeis',     'nb', 'I luften over bakkenivå på tak, terrasser eller heiser');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('idrettsomraade',                                        'nb', 'Idrettsområde');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('iLuftenOverBakkenivaaPaaTakEllerTerrasserEllerHeis',    'nb', 'I luften over bakkenivå på tak, terrasser eller heiser');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('iLuftenIFlyEllerHelikopter',                            'nb', 'I luften, fly eller helikopter');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('underJordoverflatenIGroeftEllerTunellEllerGruve',       'nb', 'Under jordoverflaten, grøfter, tuneller eller gruve.');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('paaEllerOverVann',                                      'nb', 'På eller over vann');

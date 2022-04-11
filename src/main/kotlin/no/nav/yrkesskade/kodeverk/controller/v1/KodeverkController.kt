@@ -29,6 +29,7 @@ class KodeverkController(val kodeverkService: KodeverkService) {
                 content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodetypeResponsDto::class)))]
             ),
             ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
         ]
     )
     @GetMapping("/typer")
@@ -45,6 +46,7 @@ class KodeverkController(val kodeverkService: KodeverkService) {
                 content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodekategoriResponsDto::class)))]
             ),
             ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
         ]
     )
     @GetMapping("/typer/{typenavn}/kategorier")
@@ -61,6 +63,7 @@ class KodeverkController(val kodeverkService: KodeverkService) {
                 content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodeverdiResponsDto::class)))]
             ),
             ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
         ]
     )
     @GetMapping("/typer/{typenavn}/kodeverdier")
@@ -77,6 +80,7 @@ class KodeverkController(val kodeverkService: KodeverkService) {
                 content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodeverdiResponsDto::class)))]
             ),
             ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
         ]
     )
     @GetMapping("/typer/{typenavn}/kategorier/{kategorinavn}/kodeverdier")
@@ -96,6 +100,7 @@ class KodeverkController(val kodeverkService: KodeverkService) {
                 content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodeverdiResponsDto::class)))]
             ),
             ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
         ]
     )
     @GetMapping("/typer/{typenavn}/kategorier/{kategorinavn}/kodeverdierliste")

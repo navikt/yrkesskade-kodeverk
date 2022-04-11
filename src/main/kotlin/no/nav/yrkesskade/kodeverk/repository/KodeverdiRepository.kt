@@ -20,14 +20,9 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
             SELECT kv.kode, kv.spraak, kv.verdi, k.sortering 
             FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
-            WHERE k.kategori_id IS NULL
-            AND k.type_id = :typeId
-            UNION
-            SELECT kv.kode, kv.spraak, kv.verdi, k.sortering 
-            FROM verdi kv
-            JOIN kode k ON kv.kode = k.kode
             WHERE k.kategori_id = :kategoriId
             AND k.type_id = :typeId
+            GROUP BY kv.kode, kv.spraak, kv.verdi, k.sortering
             ORDER BY sortering, verdi
         """,
         nativeQuery = true
@@ -36,4 +31,17 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
         @Param("typeId") typeId: Int,
         @Param("kategoriId") kategoriId: Int
     ): List<Verdi>
+
+    @Query(
+        value = """
+            SELECT kv.kode, kv.spraak, kv.verdi, k.sortering 
+            FROM verdi kv
+            JOIN kode k ON kv.kode = k.kode
+            WHERE k.type_id = :typeId
+            GROUP BY kv.kode, kv.spraak, kv.verdi, k.sortering
+            ORDER BY sortering, verdi
+        """,
+        nativeQuery = true
+    )
+    fun hentKodeverdiForType(@Param("typeId") typeId: Int): List<Verdi>
 }

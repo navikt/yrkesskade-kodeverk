@@ -24,7 +24,21 @@ class KodeverkService(
 
     fun hentKodetyper(): List<KodetypeDto> = kodetypeRepository.findAll().map { KodetypeDto.konverter(it) }
 
+    /**
+     * Henter kodeverider for en kodetype og kategori
+     */
     fun hentKodeverdiForTypeOgKategori(typenavn: String, kategorinavn: String): List<KodeverdiDto> {
+        return hentKodeverdiForTypeOgKategoriMuligNullKategori(typenavn, kategorinavn)
+    }
+
+    /**
+     * Henter kodeverdier for en kodetype.
+     */
+    fun hentKodeverdiForType(typenavn: String): List<KodeverdiDto> {
+        return hentKodeverdiForTypeOgKategoriMuligNullKategori(typenavn, null);
+    }
+
+    private fun hentKodeverdiForTypeOgKategoriMuligNullKategori(typenavn: String, kategorinavn: String?): List<KodeverdiDto> {
         val example: Example<Kodetype> = Example.of(Kodetype(null, typenavn, null, null, null, null))
         val kodetype = kodetypeRepository.findOne(example).orElseThrow {
             ManglendeDataException("Kunne ikke hente kodeverdier for type $typenavn og kategori $kategorinavn. Fant ingen kodetype med navn $typenavn!")
@@ -34,14 +48,18 @@ class KodeverkService(
             return kodeverkClient.hentKodeverkVerdier(kodetype.eksternNavn!!)
         }
 
-        val kategoriExample: Example<Kodekategori> = Example.of(Kodekategori(null, kategorinavn, null, null))
-        val kodekategori = kodekategoriRepository.findOne(kategoriExample).orElseThrow {
-            ManglendeDataException("Kunne ikke hente kodeverdier for type $typenavn og kategori $kategorinavn. Fant ingen kategori med navn $kategorinavn!")
-        }
+        if (kategorinavn.isNullOrBlank()) {
+            return kodeverdiRepository.hentKodeverdiForType(kodetype.typeId!!).map { kodeverdi -> KodeverdiDto.konverter(kodeverdi)}
+        } else {
+            val kategoriExample: Example<Kodekategori> = Example.of(Kodekategori(null, kategorinavn, null, null))
+            val kodekategori = kodekategoriRepository.findOne(kategoriExample).orElseThrow {
+                ManglendeDataException("Kunne ikke hente kodeverdier for type $typenavn og kategori $kategorinavn. Fant ingen kategori med navn $kategorinavn!")
+            }
 
-        return kodeverdiRepository
-            .hentKodeverdiForTypeOgKategori(kodetype.typeId!!, kodekategori.kategoriId!!)
-            .map { kodeverdi -> KodeverdiDto.konverter(kodeverdi) }
+            return kodeverdiRepository
+                .hentKodeverdiForTypeOgKategori(kodetype.typeId!!, kodekategori.kategoriId!!)
+                .map { kodeverdi -> KodeverdiDto.konverter(kodeverdi) }
+        }
     }
 
     fun hentKategorierForType(typenavn: String): List<KodekategoriDto> {

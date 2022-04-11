@@ -134,6 +134,26 @@ class KodeverkControllerIT : AbstractIT() {
     }
 
     @Test
+    fun `hent map med unike kodeverkverdier for tidsrom`() {
+        mvc.perform(
+            get("$KODEVERK_V1/typer/tidsrom/kodeverdier")
+        ).andExpect(status().isOk)
+            .andExpect(jsonPath("$.kodeverdierMap").isMap)
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(11))
+
+    }
+
+    @Test
+    fun `hent map med unike kodeverkverdier for fravaerstype`() {
+        mvc.perform(
+            get("$KODEVERK_V1/typer/fravaertype/kodeverdier")
+        ).andExpect(status().isOk)
+            .andExpect(jsonPath("$.kodeverdierMap").isMap)
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(4))
+
+    }
+
+    @Test
     fun `hent landkoder`() {
         val resultActions = mvc.perform(
             get("$KODEVERK_V1/typer/landkoder/kategorier/arbeidstaker/kodeverdier")

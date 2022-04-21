@@ -251,6 +251,11 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("bakgrunnForHendelsen", "tiltaksdeltaker", 33)
     }
 
+    @Test
+    fun `hent liste med kodeverkverdier for Førte din skade eller sykdom til fravær`() {
+        hentKodeverdilisteFor("foerteDinSkadeEllerSykdomTilFravaer", "alle", 5)
+    }
+
     private fun hentKodeverdilisteFor(
         typenavn: String,
         kategorinavn: String,

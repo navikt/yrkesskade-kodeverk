@@ -13,7 +13,7 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('frilanserEllerSelvstendigNaeringsdrivende', 100, 12, '2024-03-15', null, 900);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('personerIHelseinstitusjon', 100, 12, '2024-03-15', null, 1000);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('innsatt', 100, 12, '2024-03-15', null, 1100);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('vernepliktigIFoerstegangstjeneten', 100, 12, '2024-03-15', null, 1200);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 100, 12, '2024-03-15', null, 1200);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('militaerArbeidstaker', 100, 12, '2024-03-15', null, 1300);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('veteran', 100, 12, '2024-03-15', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('militaerLaerling', 100, 12, '2024-03-15', null, 1500);
@@ -33,7 +33,7 @@ INSERT INTO verdi (kode, spraak, verdi) VALUES ('fiskerEllerFangstmann', 'nb', '
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('frilanserEllerSelvstendigNaeringsdrivende', 'nb', 'Frilanser/selvstendig næringsdrivende');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('personerIHelseinstitusjon', 'nb', 'Personer i helseinstitusjon');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('innsatt', 'nb', 'Innsatt');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('vernepliktigIFoerstegangstjeneten', 'nb', 'Personell i førstegangstjenesten');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('vernepliktigIFoerstegangstjenesten', 'nb', 'Personell i førstegangstjenesten');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('militaerArbeidstaker', 'nb', 'Militær arbeidstaker	');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('veteran', 'nb', 'Militærarbeidstaker INTOPS Utland	');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('militaerLaerling', 'nb', 'Lærling militærpersonell	');

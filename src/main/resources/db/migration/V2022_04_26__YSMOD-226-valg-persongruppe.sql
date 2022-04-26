@@ -18,7 +18,7 @@ INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering)
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('veteran', 100, 12, '2024-03-15', null, 1400);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('militaerLaerling', 100, 12, '2024-03-15', null, 1500);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('militaerElev', 100, 12, '2024-03-15', null, 1600);
-INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('frivilligTjenestegjørende', 100, 12, '2024-03-15', null, 1700);
+INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('frivilligTjenestegjøroende', 100, 12, '2024-03-15', null, 1700);
 INSERT INTO kode (kode, kategori_id, type_id, gyldig_fra, gyldig_til, sortering) VALUES ('oevrigVernepliktig', 100, 12, '2024-03-15', null, 1800);
 
 -- Verdier
@@ -38,5 +38,5 @@ INSERT INTO verdi (kode, spraak, verdi) VALUES ('militaerArbeidstaker', 'nb', 'M
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('veteran', 'nb', 'Militærarbeidstaker INTOPS Utland	');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('militaerLaerling', 'nb', 'Lærling militærpersonell	');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('militaerElev', 'nb', 'Elev militærpersonell');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('frivilligTjenestegjørende', 'nb', 'Frivillig tjenestegjørende');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('frivilligTjenestegjoerende', 'nb', 'Frivillig tjenestegjørende');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('oevrigVernepliktig', 'nb', 'Øvrig vernepliktig');

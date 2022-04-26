@@ -27,10 +27,10 @@ INSERT INTO verdi (kode, spraak, verdi) VALUES ('arbeidstakerOffshorePetroleum',
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('arbeidstakerPaaSkip', 'nb', 'Arbeidstaker på skip');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('elevEllerStudent', 'nb', 'Elev eller student');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('laerling', 'nb', 'Lærling');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('tiltaksdeltaker', 'nb', 'I tiltak regi av NAV	');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('tiltaksdeltaker', 'nb', 'I tiltak regi av NAV');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('lottaker', 'nb', 'Lottaker');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('fiskerEllerFangstmann', 'nb', 'Fisker/fangstmann');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('frilanserEllerSelvstendigNaeringsdrivende', 'nb', 'Frilanser/selvstendig næringsdrivende	');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('frilanserEllerSelvstendigNaeringsdrivende', 'nb', 'Frilanser/selvstendig næringsdrivende');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('personerIHelseinstitusjon', 'nb', 'Personer i helseinstitusjon');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('innsatt', 'nb', 'Innsatt');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('vernepliktigIFoerstegangstjeneten', 'nb', 'Personell i førstegangstjenesten');

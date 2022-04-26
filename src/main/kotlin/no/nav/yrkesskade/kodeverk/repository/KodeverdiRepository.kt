@@ -22,6 +22,7 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
             JOIN kode k ON kv.kode = k.kode
             WHERE k.kategori_id = :kategoriId
             AND k.type_id = :typeId
+            AND CURRENT_TIMESTAMP BETWEEN COALESCE(k.gyldig_fra, CURRENT_DATE) AND COALESCE (k.gyldig_til, CURRENT_TIMESTAMP)
             GROUP BY kv.kode, kv.spraak, kv.verdi, k.sortering
             ORDER BY sortering, verdi
         """,
@@ -38,6 +39,7 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
             FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
             WHERE k.type_id = :typeId
+            AND CURRENT_TIMESTAMP BETWEEN COALESCE(k.gyldig_fra, CURRENT_DATE) AND COALESCE (k.gyldig_til, CURRENT_TIMESTAMP)
             GROUP BY kv.kode, kv.spraak, kv.verdi, k.sortering
             ORDER BY sortering, verdi
         """,

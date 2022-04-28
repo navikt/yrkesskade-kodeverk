@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
@@ -253,17 +254,17 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for Førte din skade eller sykdom til fravær`() {
-        hentKodeverdilisteFor("foerteDinSkadeEllerSykdomTilFravaer", "alle", 5)
+        hentKodeverdilisteFor("foerteDinSkadeEllerSykdomTilFravaer",  5)
     }
 
     @Test
     fun `hent liste med kodeverkverdier for rolletype`() {
-        hentKodeverdilisteFor("rolletype", "alle", 2)
+        hentKodeverdilisteFor("rolletype",  2)
     }
 
     @Test
     fun `hent liste med kodeverkverdier for Innmelderroller`() {
-        hentKodeverdilisteFor("innmelderrolle", "alle", 2)
+        hentKodeverdilisteFor("innmelderrolle",  2)
     }
 
     private fun hentKodeverdilisteFor(
@@ -273,7 +274,18 @@ class KodeverkControllerIT : AbstractIT() {
     ) {
         mvc.perform(
             get("$KODEVERK_V1/typer/$typenavn/kategorier/$kategorinavn/kodeverdierliste")
-        ).andExpect(status().isOk)
+        ).andDo(MockMvcResultHandlers.print()).andExpect(status().isOk)
+            .andExpect(jsonPath("$.kodeverdierListe").isArray)
+            .andExpect(jsonPath("$.kodeverdierListe.length()").value(forventetAntall.toString()))
+    }
+
+    private fun hentKodeverdilisteFor(
+        typenavn: String,
+        forventetAntall: Int
+    ) {
+        mvc.perform(
+            get("$KODEVERK_V1/typer/$typenavn/kodeverdierliste")
+        ).andDo(MockMvcResultHandlers.print()).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierListe").isArray)
             .andExpect(jsonPath("$.kodeverdierListe.length()").value(forventetAntall.toString()))
     }

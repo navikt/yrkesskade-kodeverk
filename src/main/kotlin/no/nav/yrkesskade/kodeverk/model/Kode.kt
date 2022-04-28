@@ -6,27 +6,37 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "kode")
-data class Kode (
+data class Kode(
     @Id
-    @Column(name="kode", nullable = false, updatable = false)
+    @Column(name = "kode", nullable = false, updatable = false)
     val kode: String = "",
 
-    @Column(name="kategori_id", nullable = true)
-    var kategoriId: Int? = null,
-
-    @Column(name = "type_id", nullable = false)
-    var typeId: Int? = null,
-
-    @Column(name="gyldig_fra", nullable = true)
+    @Column(name = "gyldig_fra", nullable = true)
     var gyldigFra: Instant?,
 
-    @Column(name="gyldig_til", nullable = true)
+    @Column(name = "gyldig_til", nullable = true)
     var gyldigTil: Instant?,
 
-    @Column(name="sortering", nullable = true)
+    @Column(name = "sortering", nullable = true)
     var sortering: Int?,
 
     @OneToMany
     @JoinColumn(name = "kode")
-    var kodeverdier: MutableSet<Kodeverdi> = mutableSetOf()
+    var kodeverdier: MutableSet<Kodeverdi> = mutableSetOf(),
+
+    @ManyToMany
+    @JoinTable(
+        name = "kategori_type_kode",
+        joinColumns = [JoinColumn(name = "kategori_navn")],
+        inverseJoinColumns = [JoinColumn(name = "kode")]
+    )
+    var kategorier: Set<Kodekategori>?,
+
+    @ManyToMany
+    @JoinTable(
+        name = "type_kode",
+        joinColumns = [JoinColumn(name = "type_navn")],
+        inverseJoinColumns = [JoinColumn(name = "kode")]
+    )
+    var typer: Set<Kodetype>?
 )

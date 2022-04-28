@@ -20,8 +20,9 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
             SELECT kv.kode, kv.spraak, kv.verdi, k.sortering 
             FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
-            WHERE k.kategori_id = :kategoriId
-            AND k.type_id = :typeId
+            JOIN kategori_type_kode kk ON kk.kode = k.kode
+            WHERE kk.kategori_navn = :kategorinavn
+            AND kk.type_navn = :typenavn
             AND CURRENT_TIMESTAMP BETWEEN COALESCE(k.gyldig_fra, CURRENT_DATE) AND COALESCE (k.gyldig_til, CURRENT_TIMESTAMP)
             GROUP BY kv.kode, kv.spraak, kv.verdi, k.sortering
             ORDER BY sortering, verdi
@@ -29,8 +30,8 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
         nativeQuery = true
     )
     fun hentKodeverdiForTypeOgKategori(
-        @Param("typeId") typeId: Int,
-        @Param("kategoriId") kategoriId: Int
+        @Param("typenavn") typenavn: String,
+        @Param("kategorinavn") kategorinavn: String
     ): List<Verdi>
 
     @Query(
@@ -38,12 +39,13 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
             SELECT kv.kode, kv.spraak, kv.verdi, k.sortering 
             FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
-            WHERE k.type_id = :typeId
+            JOIN type_kode kk ON kk.kode = k.kode
+            WHERE kk.type_navn = :typenavn
             AND CURRENT_TIMESTAMP BETWEEN COALESCE(k.gyldig_fra, CURRENT_DATE) AND COALESCE (k.gyldig_til, CURRENT_TIMESTAMP)
             GROUP BY kv.kode, kv.spraak, kv.verdi, k.sortering
             ORDER BY sortering, verdi
         """,
         nativeQuery = true
     )
-    fun hentKodeverdiForType(@Param("typeId") typeId: Int): List<Verdi>
+    fun hentKodeverdiForType(@Param("typenavn") typeId: String): List<Verdi>
 }

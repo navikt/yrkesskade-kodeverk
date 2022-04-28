@@ -6,10 +6,6 @@ import javax.persistence.*
 @Table(name = "type")
 data class Kodetype(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "type_id", nullable = false)
-    var typeId: Int? = null,
-
     @Column(name = "navn", nullable = false)
     var navn: String? = null,
 
@@ -25,8 +21,8 @@ data class Kodetype(
     @ManyToMany
     @JoinTable(
         name = "kategori_type",
-        joinColumns = [JoinColumn(name = "type_id")],
-        inverseJoinColumns = [JoinColumn(name = "kategori_id")]
+        joinColumns = [JoinColumn(name = "type_navn")],
+        inverseJoinColumns = [JoinColumn(name = "kategori_navn")]
     )
     var kategorier: List<Kodekategori>?
 )

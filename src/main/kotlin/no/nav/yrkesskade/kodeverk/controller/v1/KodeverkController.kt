@@ -72,6 +72,23 @@ class KodeverkController(val kodeverkService: KodeverkService) {
         return ResponseEntity.ok(KodeverdiResponsDto.tilRespons(kodeverdier))
     }
 
+    @Operation(summary = "Hent liste over kodeverdier for en type")
+    @ApiResponses(
+        value = [
+            ApiResponse(
+                responseCode = "200", description = "Kodeverkverdier hentet",
+                content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodeverdiResponsDto::class)))]
+            ),
+            ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
+        ]
+    )
+    @GetMapping("/typer/{typenavn}/kodeverdierliste")
+    fun hentListeKodeverdierForType(@PathVariable("typenavn") typenavn: String): ResponseEntity<KodeverdiListeResponsDto> {
+        val kodeverdier = kodeverkService.hentKodeverdiForType(typenavn)
+        return ResponseEntity.ok(KodeverdiListeResponsDto(kodeverdier))
+    }
+
     @Operation(summary = "Hent samling kodeverdier for en type og kategori")
     @ApiResponses(
         value = [

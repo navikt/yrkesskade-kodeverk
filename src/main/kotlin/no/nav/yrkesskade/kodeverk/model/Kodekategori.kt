@@ -6,10 +6,6 @@ import javax.persistence.*
 @Table(name = "kategori")
 data class Kodekategori(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "kategori_id", nullable = false)
-    var kategoriId: Int? = null,
-
     @Column(name = "navn", nullable = false)
     var navn: String? = null,
 
@@ -17,6 +13,9 @@ data class Kodekategori(
     var beskrivelse: String? = null,
 
     @ManyToMany(mappedBy = "kategorier")
-    var typer: List<Kodetype>?
+    var typer: List<Kodetype>?,
+
+    @ManyToMany(mappedBy = "kategorier")
+    var koder: Set<Kode>?
 
 )

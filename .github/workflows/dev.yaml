@@ -1,4 +1,4 @@
-name: Build and deploy yrkesskade-kodeverk
+name: Build and deploy yrkesskade-kodeverk to DEV
 on:
   push:
     branches:

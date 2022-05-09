@@ -2,7 +2,7 @@ name: Build and deploy yrkesskade-kodeverk
 on:
   push:
     branches:
-      - main
+      - dev
 
 env:
   IMAGE: "ghcr.io/${{ github.repository }}:${{ github.sha }}"

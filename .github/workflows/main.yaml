@@ -1,4 +1,4 @@
-name: Build and deploy yrkesskade-kodeverk
+name: Build and deploy yrkesskade-kodeverk to PROD
 on:
   push:
     branches:
@@ -38,30 +38,30 @@ jobs:
       - name: Build and push the Docker image
         run: "docker build --pull --tag ${IMAGE} --tag ${LATEST_IMAGE} . && docker push ${IMAGE} && docker push ${LATEST_IMAGE}"
 
-  deploy-to-dev:
-    name: Deploy app to dev
+  deploy-to-prod:
+    name: Deploy app to prod
     needs: build
     runs-on: ubuntu-18.04
     steps:
       - uses: "actions/checkout@v2"
-      - name: Deploy to DEV
+      - name: Deploy to PROD
         uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
+          CLUSTER: prod-gcp
           RESOURCE: ./.nais/nais.yaml
-          VARS: .nais/dev/vars.yaml
+          VARS: .nais/prod/vars.yaml
 
-  deploy-alerts-to-dev:
-    name: Deploy alerts to DEV
+  deploy-alerts-to-prod:
+    name: Deploy alerts to PROD
     needs: build
     runs-on: ubuntu-18.04
     steps:
       - uses: "actions/checkout@v2"
-      - name: Deploy alerts to DEV
+      - name: Deploy alerts to PROD
         uses: "nais/deploy/actions/deploy@v1"
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
-          RESOURCE: .nais/dev/alerts.yaml
-          VARS: .nais/dev/vars.yaml
+          CLUSTER: prod-gcp
+          RESOURCE: .nais/prod/alerts.yaml
+          VARS: .nais/prod/vars.yaml

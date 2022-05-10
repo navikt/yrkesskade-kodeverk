@@ -17,9 +17,6 @@ data class Kode(
     @Column(name = "gyldig_til", nullable = true)
     var gyldigTil: Instant?,
 
-    @Column(name = "sortering", nullable = true)
-    var sortering: Int?,
-
     @OneToMany
     @JoinColumn(name = "kode")
     var kodeverdier: MutableSet<Kodeverdi> = mutableSetOf(),

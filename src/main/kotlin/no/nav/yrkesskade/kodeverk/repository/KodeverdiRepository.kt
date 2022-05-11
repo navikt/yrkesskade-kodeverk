@@ -36,14 +36,13 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
 
     @Query(
         value = """
-            SELECT kv.kode, kv.spraak, kv.verdi, ktk.sortering 
+            SELECT kv.kode, kv.spraak, kv.verdi, tk.sortering 
             FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
             JOIN type_kode tk ON tk.kode = k.kode
-            JOIN kategori_type_kode ktk ON k.kode = ktk.kode
             WHERE tk.type_navn = :typenavn
             AND CURRENT_TIMESTAMP BETWEEN COALESCE(k.gyldig_fra, CURRENT_DATE) AND COALESCE (k.gyldig_til, CURRENT_TIMESTAMP)
-            GROUP BY kv.kode, kv.spraak, kv.verdi, ktk.sortering
+            GROUP BY kv.kode, kv.spraak, kv.verdi, tk.sortering
             ORDER BY sortering, verdi
         """,
         nativeQuery = true

@@ -1,6 +1,6 @@
 ALTER TABLE kode DROP COLUMN sortering;
 
-ALTER TABLE kategori_type_kode ADD COLUMN sortering INTEGER;
+ALTER TABLE kategori_type_kode ADD COLUMN sortering INTEGER DEFAULT 0;
 
 UPDATE kategori_type_kode SET sortering = 100 WHERE kategori_navn = 'arbeidstaker' AND type_navn = 'aarsakOgBakgrunn' AND kode = 'stukketEllerKuttet';
 UPDATE kategori_type_kode SET sortering = 200 WHERE kategori_navn = 'arbeidstaker' AND type_navn = 'aarsakOgBakgrunn' AND kode = 'stoetEllerTreffAvGjenstand';

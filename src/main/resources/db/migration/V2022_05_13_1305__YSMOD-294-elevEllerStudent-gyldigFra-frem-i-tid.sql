@@ -1,0 +1,1 @@
+update kode set gyldig_fra = '2024-05-08' where kode = 'elevEllerStudent';

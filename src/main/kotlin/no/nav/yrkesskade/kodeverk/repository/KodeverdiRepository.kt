@@ -17,14 +17,14 @@ interface Verdi {
 interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
     @Query(
         value = """
-            SELECT kv.kode, kv.spraak, kv.verdi, k.sortering 
+            SELECT kv.kode, kv.spraak, kv.verdi, kk.sortering 
             FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
             JOIN kategori_type_kode kk ON kk.kode = k.kode
             WHERE lower(kk.kategori_navn) = lower(:kategorinavn)
             AND kk.type_navn = :typenavn
             AND CURRENT_TIMESTAMP BETWEEN COALESCE(k.gyldig_fra, CURRENT_DATE) AND COALESCE (k.gyldig_til, CURRENT_TIMESTAMP)
-            GROUP BY kv.kode, kv.spraak, kv.verdi, k.sortering
+            GROUP BY kv.kode, kv.spraak, kv.verdi, kk.sortering
             ORDER BY sortering, verdi
         """,
         nativeQuery = true
@@ -36,13 +36,13 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
 
     @Query(
         value = """
-            SELECT kv.kode, kv.spraak, kv.verdi, k.sortering 
+            SELECT kv.kode, kv.spraak, kv.verdi, tk.sortering 
             FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
-            JOIN type_kode kk ON kk.kode = k.kode
-            WHERE kk.type_navn = :typenavn
+            JOIN type_kode tk ON tk.kode = k.kode
+            WHERE tk.type_navn = :typenavn
             AND CURRENT_TIMESTAMP BETWEEN COALESCE(k.gyldig_fra, CURRENT_DATE) AND COALESCE (k.gyldig_til, CURRENT_TIMESTAMP)
-            GROUP BY kv.kode, kv.spraak, kv.verdi, k.sortering
+            GROUP BY kv.kode, kv.spraak, kv.verdi, tk.sortering
             ORDER BY sortering, verdi
         """,
         nativeQuery = true

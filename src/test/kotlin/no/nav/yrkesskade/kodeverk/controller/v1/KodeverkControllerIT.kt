@@ -88,6 +88,16 @@ class KodeverkControllerIT : AbstractIT() {
     }
 
     @Test
+    fun `skal hente map med kodeverkverdier uavhengig av case på kategorier`() {
+        mvc.perform(
+            get("$KODEVERK_V1/typer/tidsrom/kategorier/elevellerstudent/kodeverdier")
+        ).andExpect(status().isOk)
+            .andExpect(jsonPath("$.kodeverdierMap").isMap)
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(5))
+
+    }
+
+    @Test
     fun `hent map med kodeverkverdier for tidsrom og elev kategori`() {
         mvc.perform(
             get("$KODEVERK_V1/typer/tidsrom/kategorier/elevEllerStudent/kodeverdier")

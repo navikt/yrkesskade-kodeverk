@@ -21,7 +21,7 @@ interface KodeverdiRepository : JpaRepository<Kodeverdi, KodeverdiId> {
             FROM verdi kv
             JOIN kode k ON kv.kode = k.kode
             JOIN kategori_type_kode kk ON kk.kode = k.kode
-            WHERE kk.kategori_navn = :kategorinavn
+            WHERE lower(kk.kategori_navn) = lower(:kategorinavn)
             AND kk.type_navn = :typenavn
             AND CURRENT_TIMESTAMP BETWEEN COALESCE(k.gyldig_fra, CURRENT_DATE) AND COALESCE (k.gyldig_til, CURRENT_TIMESTAMP)
             GROUP BY kv.kode, kv.spraak, kv.verdi, kk.sortering

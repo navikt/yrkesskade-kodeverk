@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - dev
 
 env:
   IMAGE: "ghcr.io/${{ github.repository }}:${{ github.sha }}"
@@ -38,8 +39,39 @@ jobs:
       - name: Build and push the Docker image
         run: "docker build --pull --tag ${IMAGE} --tag ${LATEST_IMAGE} . && docker push ${IMAGE} && docker push ${LATEST_IMAGE}"
 
+  deploy-to-dev:
+    if: github.ref == 'refs/heads/dev'
+    name: Deploy app to DEV
+    needs: build
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: "actions/checkout@v2"
+      - name: Deploy to DEV
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: ./.nais/nais.yaml
+          VARS: .nais/dev/vars.yaml
+
+  deploy-alerts-to-dev:
+    if: github.ref == 'refs/heads/dev'
+    name: Deploy alerts to DEV
+    needs: build
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: "actions/checkout@v2"
+      - name: Deploy alerts to DEV
+        uses: "nais/deploy/actions/deploy@v1"
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: .nais/dev/alerts.yaml
+          VARS: .nais/dev/vars.yaml
+
   deploy-to-prod:
-    name: Deploy app to prod
+    if: github.ref == 'refs/heads/main'
+    name: Deploy app to PROD
     needs: build
     runs-on: ubuntu-18.04
     steps:
@@ -53,6 +85,7 @@ jobs:
           VARS: .nais/prod/vars.yaml
 
   deploy-alerts-to-prod:
+    if: github.ref == 'refs/heads/main'
     name: Deploy alerts to PROD
     needs: build
     runs-on: ubuntu-18.04

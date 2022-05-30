@@ -1,0 +1,1 @@
+UPDATE kode SET gyldig_fra = '2022-05-30' WHERE kode = 'tiltaksdeltaker';

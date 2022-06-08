@@ -67,7 +67,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for Har skadelidt hatt fravær`() {
-        hentKategorierFor("harSkadelidtHattFravaer", 2)
+        hentKategorierFor("harSkadelidtHattFravaer", 3)
     }
 
     @Test
@@ -243,7 +243,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("harSkadelidtHattFravaer", "arbeidstaker", 4)
         hentKodeverdilisteFor("harSkadelidtHattFravaer", "laerling", 4)
         hentKodeverdilisteFor("harSkadelidtHattFravaer", "elevEllerStudent", 0)
-        hentKodeverdilisteFor("harSkadelidtHattFravaer", "tiltaksdeltaker", 0)
+        hentKodeverdilisteFor("harSkadelidtHattFravaer", "tiltaksdeltaker", 4)
     }
 
     @Test

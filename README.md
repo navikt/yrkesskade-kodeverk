@@ -14,7 +14,7 @@ Tjenesten tilbyr også tilgang til diverse kodeverk fra NAVs felles kodeverk.
 
 # Dokumentasjon
 Dokumentasjon for en kjørende instans av dette kodeverket er tilgjengelig i form av en Swaggerdoc på url `<url>/v3/api-docs`, f.eks. `https://yrkesskade-kodeverk.dev.intern.nav.no/v3/api-docs`.
-Dersom man ikke har tilgang til kodeverket i noen av NAVs miljøer, er det ingenting i veien for å klone dette prosjektet, kjøre det lokalt og hente Swaggerdocen på localhost.
+Dersom man ikke har tilgang til kodeverket i noen av NAVs miljøer, er det ingenting i veien for å klone dette prosjektet, kjøre det lokalt og hente Swaggerdocen på [localhost](http://localhost:8080/swagger-ui/index.html).
 
 # Komme i gang
 

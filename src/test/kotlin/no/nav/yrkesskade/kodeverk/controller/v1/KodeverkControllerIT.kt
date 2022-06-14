@@ -277,6 +277,16 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("innmelderrolle",  2)
     }
 
+    @Test
+    fun `hent liste med kodeverkverdier for Hva slags sykdom er det`() {
+        hentKodeverdilisteFor("sykdomstype",  21)
+    }
+
+    @Test
+    fun `hent liste med kodeverkverdier for Hvilken skadelig påvirking har personen vært utsatt for`() {
+        hentKodeverdilisteFor("paavirkningsform",  15)
+    }
+
     private fun hentKodeverdilisteFor(
         typenavn: String,
         kategorinavn: String,

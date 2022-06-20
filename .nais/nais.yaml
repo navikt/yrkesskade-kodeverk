@@ -35,6 +35,7 @@ spec:
         - application: yrkesskade-melding-api
         - application: yrkesskade-skjema
         - application: yrkesskade-saksbehandling
+        - application: yrkesskade-skadeforklaring-skjema
     outbound:
       external:
         - host: unleash.nais.io

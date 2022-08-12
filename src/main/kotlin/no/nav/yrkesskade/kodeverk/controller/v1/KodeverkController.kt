@@ -7,8 +7,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
 import no.nav.security.token.support.core.api.Unprotected
-import no.nav.security.token.support.core.context.TokenValidationContextHolder
-import no.nav.yrkesskade.kodeverk.config.ApiWhitelistAccessProperties
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodekategoriResponsDto
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodetypeResponsDto
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiListeResponsDto

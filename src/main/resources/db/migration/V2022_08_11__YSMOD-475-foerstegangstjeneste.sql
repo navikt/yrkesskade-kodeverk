@@ -5,7 +5,6 @@
 -- Kodelisten 'Innenfor hvilket tidsrom inntraff skaden'
 INSERT INTO kategori (navn, beskrivelse) VALUES ('vernepliktigIFoerstegangstjenesten', 'Vernepliktig i førstegangstjenesten');
 
-
 -- Kodelisten 'Innenfor hvilket tidsrom inntraff skaden'
 
 INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('paaReiseTilTjeneste', '2022-08-11', null);
@@ -133,3 +132,7 @@ INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUE
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'skadetype', 'alternativenePasserIkke', 2300);
 
 
+
+-- Gjør 'vernepliktigIFoerstangstjenesten' tilgjengelig for rolletype
+
+UPDATE kode SET gyldig_fra = '2022-08-11' WHERE kode = 'vernepliktigIFoerstegangstjenesten';

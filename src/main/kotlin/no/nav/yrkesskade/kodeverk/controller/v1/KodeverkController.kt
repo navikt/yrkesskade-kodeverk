@@ -7,10 +7,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
 import no.nav.security.token.support.core.api.Unprotected
-import no.nav.yrkesskade.kodeverk.controller.v1.dto.*
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodekategoriResponsDto
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodetypeResponsDto
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiListeResponsDto
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiResponsDto
 import no.nav.yrkesskade.kodeverk.service.KodeverkService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import javax.servlet.http.HttpServletRequest
 
 @Tag(name = "Kodeverk API", description = "Kodeverk API")
 @Unprotected
@@ -30,7 +34,7 @@ class KodeverkController(val kodeverkService: KodeverkService) {
         ]
     )
     @GetMapping("/typer")
-    fun hentKodeverktyper(): ResponseEntity<KodetypeResponsDto> {
+    fun hentKodeverktyper(request: HttpServletRequest): ResponseEntity<KodetypeResponsDto> {
         val kodeverktyper = kodeverkService.hentKodetyper()
         return ResponseEntity.ok(KodetypeResponsDto(kodeverktyper))
     }
@@ -129,41 +133,5 @@ class KodeverkController(val kodeverkService: KodeverkService) {
     ): ResponseEntity<KodeverdiListeResponsDto> {
         val kodeverdier = kodeverkService.hentKodeverdiForTypeOgKategori(typenavn, kategorinavn)
         return ResponseEntity.ok(KodeverdiListeResponsDto(kodeverdier))
-    }
-
-    @Operation(summary = "Hent liste over tilgjengelige kategorier")
-    @ApiResponses(
-        value = [
-            ApiResponse(
-                responseCode = "200", description = "Kodeverkkategorier hentet",
-                content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodetypeResponsDto::class)))]
-            ),
-            ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
-            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
-        ]
-    )
-    @GetMapping("/kategorier")
-    fun hentKodeverkategorier(): ResponseEntity<KodekategoriResponsDto> {
-        val kodeverkategorier = kodeverkService.hentKodekategorier()
-        return ResponseEntity.ok(KodekategoriResponsDto(kodeverkategorier))
-    }
-
-    @Operation(summary = "Hent liste over tilgjengelige typer for en kategori")
-    @ApiResponses(
-        value = [
-            ApiResponse(
-                responseCode = "200", description = "Kodeverktyper hentet",
-                content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodetypeResponsDto::class)))]
-            ),
-            ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
-            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
-        ]
-    )
-    @GetMapping("/kategorier/{kategorinavn}/typer")
-    fun hentKodeverktyper(@PathVariable("kategorinavn") kategorinavn: String): ResponseEntity<KodetypeResponsDto> {
-        check(!kategorinavn.isNullOrBlank(), { "Kategorinavn kan ikke være null eller blank"})
-        val kategori = kodeverkService.hentKategori(kategorinavn)
-        val kodeverktyper = kategori.typer.orEmpty().map { KodetypeDto.konverter(it) }
-        return ResponseEntity.ok(KodetypeResponsDto(kodeverktyper))
     }
 }

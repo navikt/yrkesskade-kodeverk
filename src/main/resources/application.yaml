@@ -1,3 +1,6 @@
+CLUSTER: gcp
+KODEVERK_CLIENT_ID: ${ENV}-${CLUSTER}.yrkesskade-kodeverk
+
 spring:
   application.name: yrkesskade-kodeverk
   main:
@@ -24,6 +27,11 @@ management:
 
 YRKESSKADE_PROXY_CLIENT_ID: dev-fss.yrkesskade.yrkesskade-proxy
 no.nav.security.jwt:
+  issuer:
+    azuread:
+      discoveryurl: ${AZURE_APP_WELL_KNOWN_URL}
+      accepted_audience: ${KODEVERK_CLIENT_ID}
+      cookie_name: azure_token
   client:
     registration:
       yrkesskade-proxy:
@@ -39,3 +47,5 @@ api:
   client:
     kodeverk:
       url: https://kodeverk.dev.intern.nav.no/
+  whitelist:
+    clients:

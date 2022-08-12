@@ -1,5 +1,7 @@
 package no.nav.yrkesskade.kodeverk.service
 
+import no.nav.security.token.support.core.context.TokenValidationContextHolder
+import no.nav.yrkesskade.kodeverk.config.ApiWhitelistAccessProperties
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodekategoriDto
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodetypeDto
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiDto
@@ -15,10 +17,18 @@ class KodeverkService(
     val kodetypeRepository: KodetypeRepository,
     val kodeverdiRepository: KodeverdiRepository,
     val kodekategoriRepository: KodekategoriRepository,
-    val kodeverkClient: KodeverkClient
+    val kodeverkClient: KodeverkClient,
+    val tokenValidationContextHolder: TokenValidationContextHolder,
+    val apiWhitelistAccessProperties: ApiWhitelistAccessProperties
 ) {
 
-    fun hentKodetyper(): List<KodetypeDto> = kodetypeRepository.findAll().map { KodetypeDto.konverter(it) }
+    fun hentKodetyper(): List<KodetypeDto> {
+        return if (hentBeskyttet()) {
+            kodetypeRepository.findAll().map { KodetypeDto.konverter(it) }
+        } else {
+            kodetypeRepository.findByBeskyttet(false).map { KodetypeDto.konverter(it) }
+        }
+    }
 
     /**
      * Henter kodeverider for en kodetype og kategori
@@ -63,6 +73,20 @@ class KodeverkService(
         }
 
         return kodetype.kategorier!!.map { KodekategoriDto.konverter(it) }
+    }
+
+
+    private fun hentBeskyttet(): Boolean {
+        val jwtToken = tokenValidationContextHolder.tokenValidationContext.getJwtToken("azuread")
+        var hentBeskyttet = false
+        if (jwtToken != null) {
+            val azp = jwtToken.jwtTokenClaims.get("azp")
+            val tid = jwtToken.jwtTokenClaims.get("tid")
+
+            hentBeskyttet = apiWhitelistAccessProperties.clients.contains(azp) && tid.equals("azuread")
+        }
+
+        return hentBeskyttet
     }
 
 }

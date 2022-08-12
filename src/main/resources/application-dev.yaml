@@ -1,3 +1,5 @@
+ENV: dev
+
 spring:
   application.name: yrkesskade-kodeverk
   main:

@@ -7,13 +7,19 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
 import no.nav.security.token.support.core.api.Unprotected
-import no.nav.yrkesskade.kodeverk.controller.v1.dto.*
+import no.nav.security.token.support.core.context.TokenValidationContextHolder
+import no.nav.yrkesskade.kodeverk.config.ApiWhitelistAccessProperties
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodekategoriResponsDto
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodetypeResponsDto
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiListeResponsDto
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiResponsDto
 import no.nav.yrkesskade.kodeverk.service.KodeverkService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.servlet.http.HttpServletRequest
 
 @Tag(name = "Kodeverk API", description = "Kodeverk API")
 @Unprotected
@@ -33,7 +39,7 @@ class KodeverkController(val kodeverkService: KodeverkService) {
         ]
     )
     @GetMapping("/typer")
-    fun hentKodeverktyper(): ResponseEntity<KodetypeResponsDto> {
+    fun hentKodeverktyper(request: HttpServletRequest): ResponseEntity<KodetypeResponsDto> {
         val kodeverktyper = kodeverkService.hentKodetyper()
         return ResponseEntity.ok(KodetypeResponsDto(kodeverktyper))
     }
@@ -128,4 +134,5 @@ class KodeverkController(val kodeverkService: KodeverkService) {
         val kodeverdier = kodeverkService.hentKodeverdiForTypeOgKategori(typenavn, kategorinavn)
         return ResponseEntity.ok(KodeverdiListeResponsDto(kodeverdier))
     }
+
 }

@@ -2,6 +2,8 @@ package no.nav.yrkesskade.kodeverk.controller.v1
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import no.nav.security.mock.oauth2.MockOAuth2Server
+import no.nav.security.mock.oauth2.token.DefaultOAuth2TokenCallback
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiListeResponsDto
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiResponsDto
 import no.nav.yrkesskade.kodeverk.test.AbstractIT
@@ -16,6 +18,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import org.testcontainers.shaded.org.bouncycastle.crypto.tls.ConnectionEnd.server
 
 @Suppress("NonAsciiCharacters")
 @AutoConfigureMockMvc
@@ -23,6 +26,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 class KodeverkControllerIT : AbstractIT() {
 
     private val objectMapper = jacksonObjectMapper().registerModule(JavaTimeModule())
+
+    @Autowired
+    lateinit var server: MockOAuth2Server
 
     @Autowired
     lateinit var mvc: MockMvc
@@ -33,6 +39,44 @@ class KodeverkControllerIT : AbstractIT() {
             get("$KODEVERK_V1/typer")
         ).andExpect(status().isOk)
 
+    }
+
+    @Test
+    fun `hent kodeverk typer med autentisert bruker`() {
+        val jwt = token("azuread", "test@nav.test.no", "aad-client-id")
+        mvc.perform(
+            get("$KODEVERK_V1/typer").header("Authorization", "Bearer $jwt")
+        ).andDo(MockMvcResultHandlers.print())
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.typer.length()").value(19))
+    }
+
+    @Test
+    fun `hent kodeverk typer med autentisert bruker som ikke er i whitelist`() {
+        val jwt = token("azuread", "test@nav.test.no", "aad-client-id", "ikke-i-whitelist")
+        mvc.perform(
+            get("$KODEVERK_V1/typer").header("Authorization", "Bearer $jwt")
+        ).andDo(MockMvcResultHandlers.print())
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.typer.length()").value(18))
+    }
+
+    @Test
+    fun `hent kodeverk typer uten token`() {
+        mvc.perform(
+            get("$KODEVERK_V1/typer")
+        ).andDo(MockMvcResultHandlers.print())
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.typer.length()").value(18))
+    }
+
+    @Test
+    fun `hent kodeverk typer med uautorisert bruker`() {
+        mvc.perform(
+            get("$KODEVERK_V1/typer")
+        ).andDo(MockMvcResultHandlers.print())
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.typer.length()").value(18))
     }
 
     @Test
@@ -313,5 +357,19 @@ class KodeverkControllerIT : AbstractIT() {
 
     companion object {
         private const val KODEVERK_V1 = "/api/v1/kodeverk"
+    }
+
+    private fun token(issuerId: String, subject: String, audience: String, clientId: String = "theclientid"): String {
+        return server.issueToken(
+            issuerId = issuerId,
+            clientId = clientId,
+            tokenCallback = DefaultOAuth2TokenCallback(
+                issuerId = issuerId,
+                subject = subject,
+                audience = listOf(audience),
+                claims = emptyMap(),
+                expiry = 3600L
+            )
+        ).serialize()
     }
 }

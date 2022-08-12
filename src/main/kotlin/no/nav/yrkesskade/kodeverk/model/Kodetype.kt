@@ -18,6 +18,9 @@ data class Kodetype(
     @Column(name = "ekstern_navn", nullable = true)
     var eksternNavn: String? = null,
 
+    @Column(name = "beskyttet", nullable = false)
+    var beskyttet: Boolean? = null,
+
     @ManyToMany
     @JoinTable(
         name = "kategori_type",

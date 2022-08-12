@@ -47,3 +47,5 @@ api:
   client:
     kodeverk:
       url: https://kodeverk.dev.intern.nav.no/
+  whitelist:
+    clients:

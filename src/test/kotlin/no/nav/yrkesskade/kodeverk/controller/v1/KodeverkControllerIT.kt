@@ -185,7 +185,7 @@ class KodeverkControllerIT : AbstractIT() {
         mvc.perform(
             get("$KODEVERK_V1/typer/skadetype/kategorier/arbeidstaker/kodeverdier")
         ).andExpect(status().isOk)
-            .andExpect(jsonPath("$.kodeverdierMap.length()").value(19))
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(23))
     }
 
     @Test
@@ -206,6 +206,36 @@ class KodeverkControllerIT : AbstractIT() {
             .andExpect(jsonPath("$.kodeverdierMap").isMap)
             .andExpect(jsonPath("$.kodeverdierMap.length()").value(4))
 
+    }
+
+    @Test
+    fun `hent map med unike kodeverkverdier for behandlingstyper - uautentisert`() {
+        mvc.perform(
+            get("$KODEVERK_V1/typer/behandlingstype/kodeverdier")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(status().isNotFound)
+    }
+
+    @Test
+    fun `hent map med unike kodeverkverdier for behandlingstyper - autentisert med ukjent clientid`() {
+        val jwt = token("azuread", "test@nav.test.no", "aad-client-id", "ikke-i-whitelist")
+        mvc.perform(
+            get("$KODEVERK_V1/typer/behandlingstype/kodeverdier").header("Authorization", "Bearer $jwt")
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(status().isNotFound)
+    }
+
+    @Test
+    fun `hent map med unike kodeverkverdier for behandlingstyper - autentisert `() {
+        val jwt = token("azuread", "test@nav.test.no", "aad-client-id")
+        mvc.perform(
+            get("$KODEVERK_V1/typer/behandlingstype/kodeverdier").header("Authorization", "Bearer $jwt")
+        )
+            .andExpect(status().isOk)
+            .andExpect(jsonPath("$.kodeverdierMap").isMap)
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(9))
     }
 
     @Test
@@ -268,10 +298,10 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for Årsak og bakgrunn`() {
-        hentKodeverdilisteFor("aarsakOgBakgrunn", "arbeidstaker", 19)
-        hentKodeverdilisteFor("aarsakOgBakgrunn", "laerling", 19)
-        hentKodeverdilisteFor("aarsakOgBakgrunn", "elevEllerStudent", 19)
-        hentKodeverdilisteFor("aarsakOgBakgrunn", "tiltaksdeltaker", 19)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "arbeidstaker", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "laerling", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "elevEllerStudent", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "tiltaksdeltaker", 22)
     }
 
     @Test
@@ -292,10 +322,10 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for Type arbeidsplass`() {
-        hentKodeverdilisteFor("typeArbeidsplass", "arbeidstaker", 20)
-        hentKodeverdilisteFor("typeArbeidsplass", "laerling", 20)
+        hentKodeverdilisteFor("typeArbeidsplass", "arbeidstaker", 21)
+        hentKodeverdilisteFor("typeArbeidsplass", "laerling", 21)
         hentKodeverdilisteFor("typeArbeidsplass", "elevEllerStudent", 0)
-        hentKodeverdilisteFor("typeArbeidsplass", "tiltaksdeltaker", 20)
+        hentKodeverdilisteFor("typeArbeidsplass", "tiltaksdeltaker", 21)
     }
 
     @Test

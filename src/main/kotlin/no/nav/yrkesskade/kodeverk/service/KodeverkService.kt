@@ -48,27 +48,42 @@ class KodeverkService(
         typenavn: String,
         kategorinavn: String?
     ): List<KodeverdiDto> {
+        val inkluderBeskyttet = hentBeskyttet()
         val kodetype = kodetypeRepository.findById(typenavn).orElseThrow {
             ManglendeDataException("Kunne ikke hente kodeverdier for type $typenavn og kategori $kategorinavn. Fant ingen kodetype med navn $typenavn!")
+        }
+
+        if (!inkluderBeskyttet && kodetype.beskyttet!!) {
+            throw ManglendeDataException("Kunne ikke hente kategorier for type ${typenavn}. Fant ingen kodetype med navn $typenavn!" + " > " + typenavn)
         }
 
         if (kodetype.ekstern!!) {
             return kodeverkClient.hentKodeverkVerdier(kodetype.eksternNavn!!)
         }
 
-        if (kategorinavn.isNullOrBlank()) {
-            return kodeverdiRepository.hentKodeverdiForType(typenavn)
-                .map { kodeverdi -> KodeverdiDto.konverter(kodeverdi) }
-        } else {
 
-            return kodeverdiRepository
-                .hentKodeverdiForTypeOgKategori(typenavn, kategorinavn)
-                .map { kodeverdi -> KodeverdiDto.konverter(kodeverdi) }
+        val kodeverdier = if (kategorinavn.isNullOrBlank()) {
+            if (inkluderBeskyttet)
+                kodeverdiRepository.hentKodeverdiForTypeInkludertBeskyttet(typenavn)
+            else
+                kodeverdiRepository.hentKodeverdiForType(typenavn)
+        } else {
+             if (inkluderBeskyttet) {
+                kodeverdiRepository.hentKodeverdiForTypeOgKategoriInkludertBeskyttet(typenavn, kategorinavn)
+            } else {
+                kodeverdiRepository.hentKodeverdiForTypeOgKategori(typenavn, kategorinavn)
+            }
         }
+
+        return kodeverdier.map { kodeverdi -> KodeverdiDto.konverter(kodeverdi) }
     }
 
     fun hentKategorierForType(typenavn: String): List<KodekategoriDto> {
         val kodetype = kodetypeRepository.findById(typenavn).orElseThrow {
+            ManglendeDataException("Kunne ikke hente kategorier for type ${typenavn}. Fant ingen kodetype med navn $typenavn!" + " > " + typenavn)
+        }
+
+        if (!hentBeskyttet() && kodetype.beskyttet!!) {
             ManglendeDataException("Kunne ikke hente kategorier for type ${typenavn}. Fant ingen kodetype med navn $typenavn!" + " > " + typenavn)
         }
 

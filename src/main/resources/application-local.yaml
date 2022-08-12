@@ -24,4 +24,4 @@ api:
     kodeverk:
       url: https://yrkesskade-proxy.dev.intern.nav.no/kodeverk/
   whitelist:
-    - local
+    clients:

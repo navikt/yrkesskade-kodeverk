@@ -21,4 +21,8 @@ api:
   client:
     kodeverk:
       url: https://yrkesskade-proxy.dev-fss-pub.nais.io/kodeverk/
+  whitelist:
+    clients:
+      - 12df7924-7eda-4f8a-bbd0-9be3081f9fea # saksbehandling frontend
+      - a136534f-4a9f-40c8-b96d-49a4bcb07fc2 # saksbehandling backend
 

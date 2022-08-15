@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.servlet.http.HttpServletRequest
 
 @Tag(name = "Kodeverk API", description = "Kodeverk API")
 @Unprotected
@@ -37,7 +36,7 @@ class KodeverkController(val kodeverkService: KodeverkService) {
         ]
     )
     @GetMapping("/typer")
-    fun hentKodeverktyper(request: HttpServletRequest): ResponseEntity<KodetypeResponsDto> {
+    fun hentKodeverktyper(): ResponseEntity<KodetypeResponsDto> {
         val kodeverktyper = kodeverkService.hentKodetyper()
         return ResponseEntity.ok(KodetypeResponsDto(kodeverktyper))
     }

@@ -156,15 +156,9 @@
         </dependency>
         <dependency>
             <groupId>no.nav.security</groupId>
-            <artifactId>token-validation-test-support</artifactId>
+            <artifactId>token-validation-spring-test</artifactId>
             <version>${token-support.version}</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.glassfish.hk2</groupId>
-                    <artifactId>hk2</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 

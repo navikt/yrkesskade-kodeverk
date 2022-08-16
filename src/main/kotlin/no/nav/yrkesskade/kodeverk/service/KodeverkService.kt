@@ -6,6 +6,7 @@ import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodekategoriDto
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodetypeDto
 import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiDto
 import no.nav.yrkesskade.kodeverk.error.ManglendeDataException
+import no.nav.yrkesskade.kodeverk.model.Kodekategori
 import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.KodeverkClient
 import no.nav.yrkesskade.kodeverk.repository.KodekategoriRepository
 import no.nav.yrkesskade.kodeverk.repository.KodetypeRepository
@@ -111,5 +112,9 @@ class KodeverkService(
 
         return hentBeskyttet
     }
+
+    fun hentKodekategorier(): List<KodekategoriDto> = kodekategoriRepository.findAll().map { KodekategoriDto.konverter(it) }
+
+    fun hentKategori(kategorinavn: String): Kodekategori = kodekategoriRepository.getById(kategorinavn)
 
 }

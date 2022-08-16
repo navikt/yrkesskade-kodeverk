@@ -8,7 +8,7 @@ ENV: local
 spring:
   application.name: yrkesskade-kodeverk
   main:
-    banner-mode: "off"
+    banner-mode: off
     allow-bean-definition-overriding: true
   datasource:
     url: jdbc:postgresql://localhost:5432/yrkesskade_kodeverk

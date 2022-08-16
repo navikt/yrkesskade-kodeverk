@@ -27,7 +27,6 @@ spec:
   azure:
     application:
       enabled: true
-      tenant: {{tenant}}
   tokenx:
     enabled: true
   accessPolicy:

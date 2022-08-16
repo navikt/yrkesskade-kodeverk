@@ -103,10 +103,10 @@ class KodeverkService(
 
             val erWhitelisted = apiWhitelistAccessProperties.clients.contains(azp)
             if (!erWhitelisted) {
-                logger.info("Whitelistsjekk: $azp er ikke i whitelist - ingen tilgang til beskyttet kode typer")
+                logger.info("Whitelistsjekk: '$azp' er ikke i whitelist - ingen tilgang til beskyttet kode typer")
             }
 
-            hentBeskyttet = erWhitelisted && tid.equals("azuread")
+            hentBeskyttet = erWhitelisted
         }
 
         return hentBeskyttet

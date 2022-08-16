@@ -59,7 +59,7 @@ INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('behandlingsstatus', 
 INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('behandlingsstatus', 'ikkePaabegynt', 100);
 INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('behandlingsstatus', 'underBehandling', 100);
 
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('ferdig', 'nb', 'ferdig');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('ferdig', 'nb', 'Ferdig');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('underBehandling', 'nb', 'Under behandling');
 
 -- Kodeliste for 'Behandlingsresultat'

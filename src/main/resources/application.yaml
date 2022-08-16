@@ -1,5 +1,4 @@
-CLUSTER: gcp
-KODEVERK_CLIENT_ID: ${ENV}-${CLUSTER}.yrkesskade-kodeverk
+KODEVERK_CLIENT_ID: ${AZURE_APP_CLIENT_ID}
 
 spring:
   application.name: yrkesskade-kodeverk
@@ -29,7 +28,7 @@ YRKESSKADE_PROXY_CLIENT_ID: dev-fss.yrkesskade.yrkesskade-proxy
 no.nav.security.jwt:
   issuer:
     azuread:
-      discoveryurl: ${AZURE_APP_WELL_KNOWN_URL}
+      discovery-url: ${AZURE_APP_WELL_KNOWN_URL}
       accepted_audience: ${KODEVERK_CLIENT_ID}
       cookie_name: azure_token
   client:

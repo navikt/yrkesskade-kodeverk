@@ -1,5 +1,6 @@
 package no.nav.yrkesskade.kodeverk.test
 
+import no.nav.security.token.support.spring.test.EnableMockOAuth2Server
 import no.nav.yrkesskade.kodeverk.test.docker.PostgresDockerContainer
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.context.SpringBootTest
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DirtiesContext
 @SpringBootTest
+@EnableMockOAuth2Server
 abstract class AbstractIT {
 
     init {

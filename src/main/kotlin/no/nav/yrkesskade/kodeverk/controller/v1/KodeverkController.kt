@@ -166,4 +166,5 @@ class KodeverkController(val kodeverkService: KodeverkService) {
         val kodeverktyper = kategori.typer.orEmpty().map { KodetypeDto.konverter(it) }
         return ResponseEntity.ok(KodetypeResponsDto(kodeverktyper))
     }
+
 }

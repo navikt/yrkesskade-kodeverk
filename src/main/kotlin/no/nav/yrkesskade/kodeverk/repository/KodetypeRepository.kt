@@ -4,4 +4,6 @@ import no.nav.yrkesskade.kodeverk.model.Kodetype
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface KodetypeRepository : JpaRepository<Kodetype, String> {
+
+    fun findByBeskyttet(beskyttet: Boolean): List<Kodetype>
 }

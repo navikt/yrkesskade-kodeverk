@@ -18,7 +18,8 @@ management:
       exposure:
         include: info, health, metrics, prometheus
       base-path: /internal
-      path-mapping.prometheus: prometheus
+      path-mapping:
+        prometheus: prometheus
   metrics:
     export.prometheus.enabled: true
     tags:

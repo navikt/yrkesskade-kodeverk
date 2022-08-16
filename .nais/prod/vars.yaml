@@ -1,6 +1,5 @@
 ingresses:
   - https://yrkesskade-kodeverk.intern.nav.no
 springProfile: prod
-tenant: nav.no
 externalHosts:
   - host: yrkesskade-proxy.prod-fss-pub.nais.io

@@ -13,7 +13,7 @@ INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('reiseHjemEtterDimitteri
 
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'tidsrom', 'paaReiseTilTjeneste',        100);
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'tidsrom', 'underPaalagtTjeneste',       200);
-INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'tidsrom', 'reiseHjemEtterDimittering ', 300);
+INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'tidsrom', 'reiseHjemEtterDimittering',  300);
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'tidsrom', 'underPermisjon',             400);
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'tidsrom', 'alternativenePasserIkke',    500);
 
@@ -27,7 +27,7 @@ INSERT INTO verdi (kode, spraak, verdi) VALUES ('reiseHjemEtterDimittering', 'nb
 
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'alvorlighetsgrad', 'antattIkkeOppsoektLege',      100);
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'alvorlighetsgrad', 'antattOppsoektLege',          200);
-INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'alvorlighetsgrad', 'alvorligKreftsykdom ',        300);
+INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'alvorlighetsgrad', 'alvorligKreftsykdom',         300);
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'alvorlighetsgrad', 'livstruendeSykdomEllerSkade', 400);
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('vernepliktigIFoerstegangstjenesten', 'alvorlighetsgrad', 'innmeldtDoedsfall',           500);
 
@@ -136,3 +136,5 @@ INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUE
 -- Gjør 'vernepliktigIFoerstangstjenesten' tilgjengelig for rolletype
 
 UPDATE kode SET gyldig_fra = '2022-08-11' WHERE kode = 'vernepliktigIFoerstegangstjenesten';
+
+UPDATE verdi SET verdi = 'Vernepliktig i førstegangstjenesten' WHERE kode = 'vernepliktigIFoerstegangstjenesten' and spraak = 'nb';

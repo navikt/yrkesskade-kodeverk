@@ -278,6 +278,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("tidsrom", "laerling", 9)
         hentKodeverdilisteFor("tidsrom", "elevEllerStudent", 5)
         hentKodeverdilisteFor("tidsrom", "tiltaksdeltaker", 8)
+        hentKodeverdilisteFor("tidsrom", "vernepliktigIFoerstegangstjenesten", 5)
     }
 
     @Test
@@ -286,6 +287,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("alvorlighetsgrad", "laerling", 5)
         hentKodeverdilisteFor("alvorlighetsgrad", "elevEllerStudent", 5)
         hentKodeverdilisteFor("alvorlighetsgrad", "tiltaksdeltaker", 5)
+        hentKodeverdilisteFor("alvorlighetsgrad", "vernepliktigIFoerstegangstjenesten", 5)
     }
 
     @Test
@@ -302,6 +304,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("aarsakOgBakgrunn", "laerling", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "elevEllerStudent", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "tiltaksdeltaker", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "vernepliktigIFoerstegangstjenesten", 22)
     }
 
     @Test
@@ -310,6 +313,16 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("skadetKroppsdel", "laerling", 40)
         hentKodeverdilisteFor("skadetKroppsdel", "elevEllerStudent", 40)
         hentKodeverdilisteFor("skadetKroppsdel", "tiltaksdeltaker", 40)
+        hentKodeverdilisteFor("skadetKroppsdel", "vernepliktigIFoerstegangstjenesten", 40)
+    }
+
+    @Test
+    fun `hent liste med kodeverkverdier for Hva slags skade er det`() {
+        hentKodeverdilisteFor("skadetype", "arbeidstaker", 23)
+        hentKodeverdilisteFor("skadetype", "laerling", 23)
+        hentKodeverdilisteFor("skadetype", "elevEllerStudent", 23)
+        hentKodeverdilisteFor("skadetype", "tiltaksdeltaker", 23)
+        hentKodeverdilisteFor("skadetype", "vernepliktigIFoerstegangstjenesten", 23)
     }
 
     @Test

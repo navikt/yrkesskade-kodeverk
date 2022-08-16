@@ -14,7 +14,6 @@ import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiResponsDto
 import no.nav.yrkesskade.kodeverk.service.KodeverkService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import javax.servlet.http.HttpServletRequest
 
 @Tag(name = "Kodeverk API", description = "Kodeverk API")
 @Unprotected
@@ -34,7 +33,7 @@ class KodeverkController(val kodeverkService: KodeverkService) {
         ]
     )
     @GetMapping("/typer")
-    fun hentKodeverktyper(request: HttpServletRequest): ResponseEntity<KodetypeResponsDto> {
+    fun hentKodeverktyper(): ResponseEntity<KodetypeResponsDto> {
         val kodeverktyper = kodeverkService.hentKodetyper()
         return ResponseEntity.ok(KodetypeResponsDto(kodeverktyper))
     }

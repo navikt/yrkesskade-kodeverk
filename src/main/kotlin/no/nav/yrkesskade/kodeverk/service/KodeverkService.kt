@@ -11,6 +11,7 @@ import no.nav.yrkesskade.kodeverk.oppslag.kodeverk.KodeverkClient
 import no.nav.yrkesskade.kodeverk.repository.KodekategoriRepository
 import no.nav.yrkesskade.kodeverk.repository.KodetypeRepository
 import no.nav.yrkesskade.kodeverk.repository.KodeverdiRepository
+import no.nav.yrkesskade.kodeverk.utils.getLogger
 import org.springframework.stereotype.Service
 
 @Service
@@ -22,6 +23,8 @@ class KodeverkService(
     val tokenValidationContextHolder: TokenValidationContextHolder,
     val apiWhitelistAccessProperties: ApiWhitelistAccessProperties
 ) {
+
+    val logger = getLogger(KodeverkService::class.java)
 
     fun hentKodetyper(): List<KodetypeDto> {
         return if (hentBeskyttet()) {
@@ -99,7 +102,12 @@ class KodeverkService(
             val azp = jwtToken.jwtTokenClaims.get("azp")
             val tid = jwtToken.jwtTokenClaims.get("tid")
 
-            hentBeskyttet = apiWhitelistAccessProperties.clients.contains(azp) && tid.equals("azuread")
+            val erWhitelisted = apiWhitelistAccessProperties.clients.contains(azp)
+            if (!erWhitelisted) {
+                logger.info("Whitelistsjekk: $azp er ikke i whitelist - ingen tilgang til beskyttet kode typer")
+            }
+
+            hentBeskyttet = erWhitelisted && tid.equals("azuread")
         }
 
         return hentBeskyttet

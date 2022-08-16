@@ -27,8 +27,7 @@ spec:
   azure:
     application:
       enabled: true
-    sidecar:
-      enabled: true
+      tenant: {{tenant}}
   tokenx:
     enabled: true
   accessPolicy:

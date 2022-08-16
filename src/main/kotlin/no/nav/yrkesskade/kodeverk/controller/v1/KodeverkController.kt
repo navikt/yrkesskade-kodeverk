@@ -133,4 +133,41 @@ class KodeverkController(val kodeverkService: KodeverkService) {
         val kodeverdier = kodeverkService.hentKodeverdiForTypeOgKategori(typenavn, kategorinavn)
         return ResponseEntity.ok(KodeverdiListeResponsDto(kodeverdier))
     }
+
+    @Operation(summary = "Hent liste over tilgjengelige kategorier")
+    @ApiResponses(
+        value = [
+            ApiResponse(
+                responseCode = "200", description = "Kodeverkkategorier hentet",
+                content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodetypeResponsDto::class)))]
+            ),
+            ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
+        ]
+    )
+    @GetMapping("/kategorier")
+    fun hentKodeverkategorier(): ResponseEntity<KodekategoriResponsDto> {
+        val kodeverkategorier = kodeverkService.hentKodekategorier()
+        return ResponseEntity.ok(KodekategoriResponsDto(kodeverkategorier))
+    }
+
+    @Operation(summary = "Hent liste over tilgjengelige typer for en kategori")
+    @ApiResponses(
+        value = [
+            ApiResponse(
+                responseCode = "200", description = "Kodeverktyper hentet",
+                content = [(Content(mediaType = "application/json", schema = Schema(implementation = KodetypeResponsDto::class)))]
+            ),
+            ApiResponse(responseCode = "500", description = "Internal Server Error", content = [Content()]),
+            ApiResponse(responseCode = "404", description = "Kunne ikke finne ressurs", content = [Content()]),
+        ]
+    )
+    @GetMapping("/kategorier/{kategorinavn}/typer")
+    fun hentKodeverktyper(@PathVariable("kategorinavn") kategorinavn: String): ResponseEntity<KodetypeResponsDto> {
+        check(!kategorinavn.isNullOrBlank(), { "Kategorinavn kan ikke være null eller blank"})
+        val kategori = kodeverkService.hentKategori(kategorinavn)
+        val kodeverktyper = kategori.typer.orEmpty().map { KodetypeDto.konverter(it) }
+        return ResponseEntity.ok(KodetypeResponsDto(kodeverktyper))
+    }
+
 }

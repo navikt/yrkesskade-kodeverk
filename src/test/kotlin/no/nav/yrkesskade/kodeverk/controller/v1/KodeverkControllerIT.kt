@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.RequestBuilder
+import org.springframework.test.web.servlet.ResultActions
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
@@ -48,7 +50,7 @@ class KodeverkControllerIT : AbstractIT() {
             get("$KODEVERK_V1/typer").header("Authorization", "Bearer $jwt")
         ).andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk)
-            .andExpect(jsonPath("$.typer.length()").value(19))
+            .andExpect(jsonPath("$.typer.length()").value(25))
     }
 
     @Test
@@ -351,27 +353,57 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for Førte din skade eller sykdom til fravær`() {
-        hentKodeverdilisteFor("foerteDinSkadeEllerSykdomTilFravaer",  5)
+        hentKodeverdilisteFor("foerteDinSkadeEllerSykdomTilFravaer", 5)
     }
 
     @Test
     fun `hent liste med kodeverkverdier for rolletype`() {
-        hentKodeverdilisteFor("rolletype",  5)
+        hentKodeverdilisteFor("rolletype", 5)
     }
 
     @Test
     fun `hent liste med kodeverkverdier for Innmelderroller`() {
-        hentKodeverdilisteFor("innmelderrolle",  2)
+        hentKodeverdilisteFor("innmelderrolle", 2)
     }
 
     @Test
     fun `hent liste med kodeverkverdier for Hva slags sykdom er det`() {
-        hentKodeverdilisteFor("sykdomstype",  21)
+        hentKodeverdilisteFor("sykdomstype", 21)
     }
 
     @Test
     fun `hent liste med kodeverkverdier for Hvilken skadelig påvirking har personen vært utsatt for`() {
-        hentKodeverdilisteFor("paavirkningsform",  15)
+        hentKodeverdilisteFor("paavirkningsform", 15)
+    }
+
+    @Test
+    fun `hent liste med kodeverkverdier for dokumenttyper`() {
+        hentKodeverdilisteFor("dokumenttype", 9, true)
+    }
+
+    @Test
+    fun `hent liste med kodeverkverdier for framdriftsstatus`() {
+        hentKodeverdilisteFor("framdriftsstatus", 4, true)
+    }
+
+    @Test
+    fun `hent liste med kodeverkverdier for behandlingsresultat`() {
+        hentKodeverdilisteFor("behandlingsresultat", 4, true)
+    }
+
+    @Test
+    fun `hent liste med kodeverkverdier for behandlingsstatus`() {
+        hentKodeverdilisteFor("behandlingsstatus", 3, true)
+    }
+
+    @Test
+    fun `hent liste med kodeverkverdier for saksstatus`() {
+        hentKodeverdilisteFor("saksstatus", 2, true)
+    }
+
+    @Test
+    fun `hent liste med kodeverkverdier for saksstype`() {
+        hentKodeverdilisteFor("sakstype", 4, true)
     }
 
     private fun hentKodeverdilisteFor(
@@ -388,11 +420,23 @@ class KodeverkControllerIT : AbstractIT() {
 
     private fun hentKodeverdilisteFor(
         typenavn: String,
-        forventetAntall: Int
+        forventetAntall: Int,
+        medToken: Boolean = false
     ) {
-        mvc.perform(
-            get("$KODEVERK_V1/typer/$typenavn/kodeverdierliste")
-        ).andDo(MockMvcResultHandlers.print()).andExpect(status().isOk)
+
+        var results: ResultActions
+        if (!medToken) {
+            results = mvc.perform(
+                get("$KODEVERK_V1/typer/$typenavn/kodeverdierliste")
+            )
+        } else {
+            val jwt = token("azuread", "test@nav.test.no", "aad-client-id")
+            results = mvc.perform(
+                get("$KODEVERK_V1/typer/$typenavn/kodeverdierliste").header("Authorization", "Bearer $jwt")
+            )
+        }
+
+        results.andDo(MockMvcResultHandlers.print()).andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierListe").isArray)
             .andExpect(jsonPath("$.kodeverdierListe.length()").value(forventetAntall.toString()))
     }

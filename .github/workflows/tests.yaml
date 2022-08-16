@@ -1,4 +1,4 @@
-name: Build and deploy yrkesskade-kodeverk to DEV
+name: Build and test yrkesskade-kodeverk
 on:
   push:
     branches-ignore:

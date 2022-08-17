@@ -378,7 +378,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for dokumenttyper`() {
-        hentKodeverdilisteFor("dokumenttype", 9, true)
+        hentKodeverdilisteFor("dokumenttype", 12, true)
     }
 
     @Test

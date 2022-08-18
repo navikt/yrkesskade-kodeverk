@@ -7,7 +7,7 @@ INSERT INTO type (navn, beskrivelse, beskyttet) VALUES ('dokumenttype', 'Dokumen
 
 INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('skademelding', '2022-08-04', null);
 INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('tannlegeerklaering', '2022-08-04', null);
-INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('arbeidstilsynmelding', '2022-08-04', null);
+INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('arbeidstilsynsmelding', '2022-08-04', null);
 INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('bestillingAvSpesialisterklaering', '2022-08-04', null);
 INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('tilleggsskjemaYrkessykdom', '2022-08-04', null);
 INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('bestillingAvVurderingFraHelsepersonell', '2022-08-04', null);
@@ -20,7 +20,7 @@ INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('klageskjema', '2022-08-
 
 INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('dokumenttype', 'skademelding', 100);
 INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('dokumenttype', 'tannlegeerklaering', 100);
-INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('dokumenttype', 'arbeidstilsynmelding', 100);
+INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('dokumenttype', 'arbeidstilsynsmelding', 100);
 INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('dokumenttype', 'klageskjema', 100);
 INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('dokumenttype', 'ankeskjema', 100);
 INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('dokumenttype', 'bestillingAvSpesialisterklaering', 100);
@@ -33,7 +33,7 @@ INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('dokumenttype', 'soek
 
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('skademelding', 'nb', 'Skademelding');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('tannlegeerklaering', 'nb', 'Tannlegeerklæring');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('arbeidstilsynmelding', 'nb', 'Arbeidstilsynmelding');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('arbeidstilsynsmelding', 'nb', 'Arbeidstilsynsmelding');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('bestillingAvSpesialisterklaering', 'nb', 'Bestilling av spesialisterklæring');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('skadeforklaring', 'nb', 'Skadeforklaring');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('brev', 'nb', 'Brev');
@@ -89,7 +89,7 @@ INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('behandlingsresultat'
 INSERT INTO type_kode (type_navn, kode, sortering) VALUES ('behandlingsresultat', 'raBehandletUtfoert', 100);
 
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('innvilgelse', 'nb', 'Innvilgelse');
-INSERT INTO verdi (kode, spraak, verdi) VALUES ('avslag', 'nb', 'avslag');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('avslag', 'nb', 'Avslag');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('delvisInnvilgelse', 'nb', 'Delvis innvilgelse');
 INSERT INTO verdi (kode, spraak, verdi) VALUES ('raBehandletUtfoert', 'nb', 'RA Behandlet Utført');
 

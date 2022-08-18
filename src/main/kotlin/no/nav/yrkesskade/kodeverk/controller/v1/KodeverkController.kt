@@ -7,10 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
 import no.nav.security.token.support.core.api.Unprotected
-import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodekategoriResponsDto
-import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodetypeResponsDto
-import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiListeResponsDto
-import no.nav.yrkesskade.kodeverk.controller.v1.dto.KodeverdiResponsDto
+import no.nav.yrkesskade.kodeverk.controller.v1.dto.*
 import no.nav.yrkesskade.kodeverk.service.KodeverkService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

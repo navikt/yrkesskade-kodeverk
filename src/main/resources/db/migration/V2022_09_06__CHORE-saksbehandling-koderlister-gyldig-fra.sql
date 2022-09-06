@@ -1,0 +1,2 @@
+UPDATE kode k SET gyldig_fra = '2023-09-06' FROM type_kode tk WHERE type_navn = 'dokumenttype' AND tk.kode = k.kode AND k.kode NOT IN ('tannlegeerklaering');
+UPDATE kode k SET gyldig_fra = '2023-09-06' FROM type_kode tk WHERE type_navn = 'behandlingstype' AND tk.kode = k.kode AND k.kode NOT IN ('journalfoering', 'veiledning');

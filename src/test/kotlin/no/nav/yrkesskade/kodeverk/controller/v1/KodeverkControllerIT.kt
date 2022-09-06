@@ -237,7 +237,7 @@ class KodeverkControllerIT : AbstractIT() {
         )
             .andExpect(status().isOk)
             .andExpect(jsonPath("$.kodeverdierMap").isMap)
-            .andExpect(jsonPath("$.kodeverdierMap.length()").value(9))
+            .andExpect(jsonPath("$.kodeverdierMap.length()").value(2))
     }
 
     @Test
@@ -378,7 +378,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for dokumenttyper`() {
-        hentKodeverdilisteFor("dokumenttype", 12, true)
+        hentKodeverdilisteFor("dokumenttype", 1, true)
     }
 
     @Test

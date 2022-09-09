@@ -26,3 +26,4 @@ api:
   whitelist:
     clients:
       - "client id på den som spør"
+      - "dummy-client-id"

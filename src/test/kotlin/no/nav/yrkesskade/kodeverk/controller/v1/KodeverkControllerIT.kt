@@ -50,7 +50,7 @@ class KodeverkControllerIT : AbstractIT() {
             get("$KODEVERK_V1/typer").header("Authorization", "Bearer $jwt")
         ).andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk)
-            .andExpect(jsonPath("$.typer.length()").value(25))
+            .andExpect(jsonPath("$.typer.length()").value(26))
     }
 
     @Test

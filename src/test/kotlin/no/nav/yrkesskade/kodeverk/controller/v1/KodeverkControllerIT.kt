@@ -406,6 +406,11 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("sakstype", 4, true)
     }
 
+    @Test
+    fun `hent liste med kodeverkverdier for aarsakAvvik`() {
+        hentKodeverdilisteFor("aarsakAvvik", 5, true)
+    }
+
     private fun hentKodeverdilisteFor(
         typenavn: String,
         kategorinavn: String,

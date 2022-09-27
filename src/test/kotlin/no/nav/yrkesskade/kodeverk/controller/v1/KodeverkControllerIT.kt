@@ -83,32 +83,32 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for tidsrom`() {
-        hentKategorierFor("tidsrom", 4)
+        hentKategorierFor("tidsrom", 7)
     }
 
     @Test
     fun `hent kodeverk kategorier for alvorlighetsgrad`() {
-        hentKategorierFor("alvorlighetsgrad", 4)
+        hentKategorierFor("alvorlighetsgrad", 7)
     }
 
     @Test
     fun `hent kodeverk kategorier for Hvor skjedde ulykken`() {
-        hentKategorierFor("hvorSkjeddeUlykken", 4)
+        hentKategorierFor("hvorSkjeddeUlykken", 7)
     }
 
     @Test
     fun `hent kodeverk kategorier for Årsak og bakgrunn`() {
-        hentKategorierFor("aarsakOgBakgrunn", 4)
+        hentKategorierFor("aarsakOgBakgrunn", 7)
     }
 
     @Test
     fun `hent kodeverk kategorier for Skadet kroppsdel`() {
-        hentKategorierFor("skadetKroppsdel", 4)
+        hentKategorierFor("skadetKroppsdel", 7)
     }
 
     @Test
     fun `hent kodeverk kategorier for skadetype`() {
-        hentKategorierFor("skadetype", 4)
+        hentKategorierFor("skadetype", 7)
     }
 
     @Test
@@ -123,7 +123,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for Hva var bakgrunnen for hendelsen`() {
-        hentKategorierFor("bakgrunnForHendelsen", 3)
+        hentKategorierFor("bakgrunnForHendelsen", 6)
     }
 
     private fun hentKategorierFor(typenavn: String, forventetAntall: Int) {
@@ -281,6 +281,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("tidsrom", "elevEllerStudent", 5)
         hentKodeverdilisteFor("tidsrom", "tiltaksdeltaker", 8)
         hentKodeverdilisteFor("tidsrom", "vernepliktigIFoerstegangstjenesten", 5)
+        hentKodeverdilisteFor("tidsrom", "innsatt", 6)
+        hentKodeverdilisteFor("tidsrom", "personSomUtfoererSamfunnsstraff", 6)
+        hentKodeverdilisteFor("tidsrom", "personIVaretekt", 6)
     }
 
     @Test
@@ -290,6 +293,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("alvorlighetsgrad", "elevEllerStudent", 5)
         hentKodeverdilisteFor("alvorlighetsgrad", "tiltaksdeltaker", 5)
         hentKodeverdilisteFor("alvorlighetsgrad", "vernepliktigIFoerstegangstjenesten", 5)
+        hentKodeverdilisteFor("alvorlighetsgrad", "innsatt", 5)
+        hentKodeverdilisteFor("alvorlighetsgrad", "personSomUtfoererSamfunnsstraff", 5)
+        hentKodeverdilisteFor("alvorlighetsgrad", "personIVaretekt", 5)
     }
 
     @Test
@@ -298,6 +304,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("hvorSkjeddeUlykken", "laerling", 10)
         hentKodeverdilisteFor("hvorSkjeddeUlykken", "elevEllerStudent", 10)
         hentKodeverdilisteFor("hvorSkjeddeUlykken", "tiltaksdeltaker", 14)
+        hentKodeverdilisteFor("hvorSkjeddeUlykken", "innsatt", 5)
+        hentKodeverdilisteFor("hvorSkjeddeUlykken", "personSomUtfoererSamfunnsstraff", 5)
+        hentKodeverdilisteFor("hvorSkjeddeUlykken", "personIVaretekt", 5)
     }
 
     @Test
@@ -307,6 +316,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("aarsakOgBakgrunn", "elevEllerStudent", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "tiltaksdeltaker", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "vernepliktigIFoerstegangstjenesten", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "innsatt", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "personSomUtfoererSamfunnsstraff", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "personIVaretekt", 22)
     }
 
     @Test
@@ -316,6 +328,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("skadetKroppsdel", "elevEllerStudent", 40)
         hentKodeverdilisteFor("skadetKroppsdel", "tiltaksdeltaker", 40)
         hentKodeverdilisteFor("skadetKroppsdel", "vernepliktigIFoerstegangstjenesten", 40)
+        hentKodeverdilisteFor("skadetKroppsdel", "innsatt", 40)
+        hentKodeverdilisteFor("skadetKroppsdel", "personSomUtfoererSamfunnsstraff", 40)
+        hentKodeverdilisteFor("skadetKroppsdel", "personIVaretekt", 40)
     }
 
     @Test
@@ -325,6 +340,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("skadetype", "elevEllerStudent", 23)
         hentKodeverdilisteFor("skadetype", "tiltaksdeltaker", 23)
         hentKodeverdilisteFor("skadetype", "vernepliktigIFoerstegangstjenesten", 23)
+        hentKodeverdilisteFor("skadetype", "innsatt", 23)
+        hentKodeverdilisteFor("skadetype", "personSomUtfoererSamfunnsstraff", 23)
+        hentKodeverdilisteFor("skadetype", "personIVaretekt", 23)
     }
 
     @Test
@@ -333,6 +351,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("harSkadelidtHattFravaer", "laerling", 4)
         hentKodeverdilisteFor("harSkadelidtHattFravaer", "elevEllerStudent", 0)
         hentKodeverdilisteFor("harSkadelidtHattFravaer", "tiltaksdeltaker", 4)
+        hentKodeverdilisteFor("harSkadelidtHattFravaer", "innsatt", 0)
+        hentKodeverdilisteFor("harSkadelidtHattFravaer", "personSomUtfoererSamfunnsstraff", 0)
+        hentKodeverdilisteFor("harSkadelidtHattFravaer", "personIVaretekt", 0)
     }
 
     @Test
@@ -341,6 +362,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("typeArbeidsplass", "laerling", 21)
         hentKodeverdilisteFor("typeArbeidsplass", "elevEllerStudent", 0)
         hentKodeverdilisteFor("typeArbeidsplass", "tiltaksdeltaker", 21)
+        hentKodeverdilisteFor("typeArbeidsplass", "innsatt", 0)
+        hentKodeverdilisteFor("typeArbeidsplass", "personSomUtfoererSamfunnsstraff", 0)
+        hentKodeverdilisteFor("typeArbeidsplass", "personIVaretekt", 0)
     }
 
     @Test
@@ -349,6 +373,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("bakgrunnForHendelsen", "laerling", 33)
         hentKodeverdilisteFor("bakgrunnForHendelsen", "elevEllerStudent", 0)
         hentKodeverdilisteFor("bakgrunnForHendelsen", "tiltaksdeltaker", 33)
+        hentKodeverdilisteFor("bakgrunnForHendelsen", "innsatt", 33)
+        hentKodeverdilisteFor("bakgrunnForHendelsen", "personSomUtfoererSamfunnsstraff", 33)
+        hentKodeverdilisteFor("bakgrunnForHendelsen", "personIVaretekt", 33)
     }
 
     @Test

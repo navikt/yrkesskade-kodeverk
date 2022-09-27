@@ -83,12 +83,12 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for tidsrom`() {
-        hentKategorierFor("tidsrom", 4)
+        hentKategorierFor("tidsrom", 6)
     }
 
     @Test
     fun `hent kodeverk kategorier for alvorlighetsgrad`() {
-        hentKategorierFor("alvorlighetsgrad", 4)
+        hentKategorierFor("alvorlighetsgrad", 6)
     }
 
     @Test
@@ -98,17 +98,17 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for Årsak og bakgrunn`() {
-        hentKategorierFor("aarsakOgBakgrunn", 4)
+        hentKategorierFor("aarsakOgBakgrunn", 6)
     }
 
     @Test
     fun `hent kodeverk kategorier for Skadet kroppsdel`() {
-        hentKategorierFor("skadetKroppsdel", 4)
+        hentKategorierFor("skadetKroppsdel", 6)
     }
 
     @Test
     fun `hent kodeverk kategorier for skadetype`() {
-        hentKategorierFor("skadetype", 4)
+        hentKategorierFor("skadetype", 6)
     }
 
     @Test
@@ -123,7 +123,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for Hva var bakgrunnen for hendelsen`() {
-        hentKategorierFor("bakgrunnForHendelsen", 3)
+        hentKategorierFor("bakgrunnForHendelsen", 5)
     }
 
     private fun hentKategorierFor(typenavn: String, forventetAntall: Int) {
@@ -281,6 +281,9 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("tidsrom", "elevEllerStudent", 5)
         hentKodeverdilisteFor("tidsrom", "tiltaksdeltaker", 8)
         hentKodeverdilisteFor("tidsrom", "vernepliktigIFoerstegangstjenesten", 5)
+        hentKodeverdilisteFor("tidsrom", "tjenestepliktigOgfrivilligTjenestegjørende", 5)
+        hentKodeverdilisteFor("tidsrom", "redningsEllerBranntjenesteUtenforArbeidsforhold", 5)
+
     }
 
     @Test
@@ -290,6 +293,8 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("alvorlighetsgrad", "elevEllerStudent", 5)
         hentKodeverdilisteFor("alvorlighetsgrad", "tiltaksdeltaker", 5)
         hentKodeverdilisteFor("alvorlighetsgrad", "vernepliktigIFoerstegangstjenesten", 5)
+        hentKodeverdilisteFor("alvorlighetsgrad", "tjenestepliktigOgfrivilligTjenestegjørende", 5)
+        hentKodeverdilisteFor("alvorlighetsgrad", "redningsEllerBranntjenesteUtenforArbeidsforhold", 5)
     }
 
     @Test
@@ -307,6 +312,8 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("aarsakOgBakgrunn", "elevEllerStudent", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "tiltaksdeltaker", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "vernepliktigIFoerstegangstjenesten", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "tjenestepliktigOgfrivilligTjenestegjørende", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "redningsEllerBranntjenesteUtenforArbeidsforhold", 22)
     }
 
     @Test
@@ -316,6 +323,8 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("skadetKroppsdel", "elevEllerStudent", 40)
         hentKodeverdilisteFor("skadetKroppsdel", "tiltaksdeltaker", 40)
         hentKodeverdilisteFor("skadetKroppsdel", "vernepliktigIFoerstegangstjenesten", 40)
+        hentKodeverdilisteFor("skadetKroppsdel", "tjenestepliktigOgfrivilligTjenestegjørende", 40)
+        hentKodeverdilisteFor("skadetKroppsdel", "redningsEllerBranntjenesteUtenforArbeidsforhold", 40)
     }
 
     @Test
@@ -325,6 +334,8 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("skadetype", "elevEllerStudent", 23)
         hentKodeverdilisteFor("skadetype", "tiltaksdeltaker", 23)
         hentKodeverdilisteFor("skadetype", "vernepliktigIFoerstegangstjenesten", 23)
+        hentKodeverdilisteFor("skadetype", "tjenestepliktigOgfrivilligTjenestegjørende", 23)
+        hentKodeverdilisteFor("skadetype", "redningsEllerBranntjenesteUtenforArbeidsforhold", 23)
     }
 
     @Test
@@ -333,6 +344,8 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("harSkadelidtHattFravaer", "laerling", 4)
         hentKodeverdilisteFor("harSkadelidtHattFravaer", "elevEllerStudent", 0)
         hentKodeverdilisteFor("harSkadelidtHattFravaer", "tiltaksdeltaker", 4)
+        hentKodeverdilisteFor("harSkadelidtHattFravaer", "tjenestepliktigOgfrivilligTjenestegjørende", 0)
+        hentKodeverdilisteFor("harSkadelidtHattFravaer", "redningsEllerBranntjenesteUtenforArbeidsforhold", 0)
     }
 
     @Test
@@ -349,6 +362,8 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("bakgrunnForHendelsen", "laerling", 33)
         hentKodeverdilisteFor("bakgrunnForHendelsen", "elevEllerStudent", 0)
         hentKodeverdilisteFor("bakgrunnForHendelsen", "tiltaksdeltaker", 33)
+        hentKodeverdilisteFor("bakgrunnForHendelsen", "tjenestepliktigOgfrivilligTjenestegjørende", 33)
+        hentKodeverdilisteFor("bakgrunnForHendelsen", "redningsEllerBranntjenesteUtenforArbeidsforhold", 33)
     }
 
     @Test

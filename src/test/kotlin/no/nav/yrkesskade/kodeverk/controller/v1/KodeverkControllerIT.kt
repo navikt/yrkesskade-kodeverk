@@ -83,7 +83,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for tidsrom`() {
-        hentKategorierFor("tidsrom", 9)
+        hentKategorierFor("tidsrom", 10)
     }
 
     @Test
@@ -93,12 +93,12 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for Hvor skjedde ulykken`() {
-        hentKategorierFor("hvorSkjeddeUlykken", 7)
+        hentKategorierFor("hvorSkjeddeUlykken", 8)
     }
 
     @Test
     fun `hent kodeverk kategorier for Årsak og bakgrunn`() {
-        hentKategorierFor("aarsakOgBakgrunn", 9)
+        hentKategorierFor("aarsakOgBakgrunn", 10)
     }
 
     @Test
@@ -281,6 +281,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("tidsrom", "elevEllerStudent", 5)
         hentKodeverdilisteFor("tidsrom", "tiltaksdeltaker", 8)
         hentKodeverdilisteFor("tidsrom", "vernepliktigIFoerstegangstjenesten", 5)
+        hentKodeverdilisteFor("tidsrom", "militaerTilsatt", 9)
         hentKodeverdilisteFor("tidsrom", "innsatt", 6)
         hentKodeverdilisteFor("tidsrom", "personSomUtfoererSamfunnsstraff", 6)
         hentKodeverdilisteFor("tidsrom", "personIVaretekt", 6)
@@ -312,6 +313,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("hvorSkjeddeUlykken", "innsatt", 5)
         hentKodeverdilisteFor("hvorSkjeddeUlykken", "personSomUtfoererSamfunnsstraff", 5)
         hentKodeverdilisteFor("hvorSkjeddeUlykken", "personIVaretekt", 5)
+        hentKodeverdilisteFor("hvorSkjeddeUlykken", "militaerTilsatt", 12)
     }
 
     @Test
@@ -326,6 +328,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("aarsakOgBakgrunn", "personIVaretekt", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "tjenestepliktigOgfrivilligTjenestegjoerende", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "redningsEllerBranntjenesteUtenforArbeidsforhold", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "militaerTilsatt", 22)
     }
 
     @Test

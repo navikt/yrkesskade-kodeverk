@@ -83,7 +83,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for tidsrom`() {
-        hentKategorierFor("tidsrom", 4)
+        hentKategorierFor("tidsrom", 5)
     }
 
     @Test
@@ -93,12 +93,12 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for Hvor skjedde ulykken`() {
-        hentKategorierFor("hvorSkjeddeUlykken", 4)
+        hentKategorierFor("hvorSkjeddeUlykken", 5)
     }
 
     @Test
     fun `hent kodeverk kategorier for Årsak og bakgrunn`() {
-        hentKategorierFor("aarsakOgBakgrunn", 4)
+        hentKategorierFor("aarsakOgBakgrunn", 5)
     }
 
     @Test
@@ -281,6 +281,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("tidsrom", "elevEllerStudent", 5)
         hentKodeverdilisteFor("tidsrom", "tiltaksdeltaker", 8)
         hentKodeverdilisteFor("tidsrom", "vernepliktigIFoerstegangstjenesten", 5)
+        hentKodeverdilisteFor("tidsrom", "militaerTilsatt", 9)
     }
 
     @Test
@@ -298,6 +299,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("hvorSkjeddeUlykken", "laerling", 10)
         hentKodeverdilisteFor("hvorSkjeddeUlykken", "elevEllerStudent", 10)
         hentKodeverdilisteFor("hvorSkjeddeUlykken", "tiltaksdeltaker", 14)
+        hentKodeverdilisteFor("hvorSkjeddeUlykken", "militaerTilsatt", 12)
     }
 
     @Test
@@ -307,6 +309,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor("aarsakOgBakgrunn", "elevEllerStudent", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "tiltaksdeltaker", 22)
         hentKodeverdilisteFor("aarsakOgBakgrunn", "vernepliktigIFoerstegangstjenesten", 22)
+        hentKodeverdilisteFor("aarsakOgBakgrunn", "militaerTilsatt", 22)
     }
 
     @Test

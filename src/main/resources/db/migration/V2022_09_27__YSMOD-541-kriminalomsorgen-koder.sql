@@ -1,8 +1,9 @@
 -- Kriminalomsorg --
 
 -- Rolletyper --
-INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('personSomUtfoererSamfunnsstraff', '2024-03-15', null);
-INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('personIVaretekt', '2024-03-15', null);
+UPDATE kode SET gyldig_fra = '2022-09-28' where kode = 'innsatt';
+INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('personSomUtfoererSamfunnsstraff', '2022-09-28', null);
+INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('personIVaretekt', '2022-09-28', null);
 
 INSERT INTO type_kode (type_navn, kode) VALUES ('rolletype','personSomUtfoererSamfunnsstraff');
 INSERT INTO type_kode (type_navn, kode) VALUES ('rolletype','personIVaretekt');

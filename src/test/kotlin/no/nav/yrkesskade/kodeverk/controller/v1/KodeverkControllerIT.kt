@@ -385,7 +385,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for rolletype`() {
-        hentKodeverdilisteFor("rolletype", 5)
+        hentKodeverdilisteFor("rolletype", 8)
     }
 
     @Test

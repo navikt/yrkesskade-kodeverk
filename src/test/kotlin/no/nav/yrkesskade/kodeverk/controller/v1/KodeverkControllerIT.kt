@@ -83,7 +83,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for tidsrom`() {
-        hentKategorierFor("tidsrom", 6)
+        hentKategorierFor("tidsrom", 10)
     }
 
     @Test
@@ -256,13 +256,17 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for Tidsrom`() {
-        hentKodeverdilisteFor("tidsrom", "arbeidstaker", 9)
-        hentKodeverdilisteFor("tidsrom", "laerling", 9)
-        hentKodeverdilisteFor("tidsrom", "elevEllerStudent", 5)
-        hentKodeverdilisteFor("tidsrom", "tiltaksdeltaker", 8)
-        hentKodeverdilisteFor("tidsrom", "vernepliktigIFoerstegangstjenesten", 5)
-        hentKodeverdilisteFor("tidsrom", "vernepliktigIRepetisjonstjeneste", 5)
-        hentKodeverdilisteFor("tidsrom", "militaerTilsatt", 9)
+        val type = "tidsrom"
+        hentKodeverdilisteFor(type, "arbeidstaker", 9)
+        hentKodeverdilisteFor(type, "laerling", 9)
+        hentKodeverdilisteFor(type, "elevEllerStudent", 5)
+        hentKodeverdilisteFor(type, "tiltaksdeltaker", 8)
+        hentKodeverdilisteFor(type, "vernepliktigIFoerstegangstjenesten", 5)
+        hentKodeverdilisteFor(type, "vernepliktigIRepetisjonstjeneste", 5)
+        hentKodeverdilisteFor(type, "militaerTilsatt", 9)
+        hentKodeverdilisteFor(type, "militaerLaerling", 9)
+        hentKodeverdilisteFor(type, "militaerElev", 6)
+        hentKodeverdilisteFor(type, "frivilligTjenestegjørendeMilitaer", 5)
     }
 
     @Test
@@ -272,11 +276,16 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for Hvor skjedde ulykken`() {
-        hentKodeverdilisteFor("hvorSkjeddeUlykken", "arbeidstaker", 10)
-        hentKodeverdilisteFor("hvorSkjeddeUlykken", "laerling", 10)
-        hentKodeverdilisteFor("hvorSkjeddeUlykken", "elevEllerStudent", 10)
-        hentKodeverdilisteFor("hvorSkjeddeUlykken", "tiltaksdeltaker", 14)
-        hentKodeverdilisteFor("hvorSkjeddeUlykken", "militaerTilsatt", 12)
+        val type = "hvorSkjeddeUlykken"
+        hentKodeverdilisteFor(type, "arbeidstaker", 10)
+        hentKodeverdilisteFor(type, "laerling", 10)
+        hentKodeverdilisteFor(type, "elevEllerStudent", 10)
+        hentKodeverdilisteFor(type, "tiltaksdeltaker", 14)
+        hentKodeverdilisteFor(type, "militaerTilsatt", 12)
+        hentKodeverdilisteFor(type, "militaerLaerling", 12)
+        hentKodeverdilisteFor(type, "militaerElev", 0)
+        hentKodeverdilisteFor(type, "vernepliktigIRepetisjonstjeneste", 0)
+        hentKodeverdilisteFor(type, "frivilligTjenestegjørendeMilitaer", 0)
     }
 
     @Test
@@ -296,26 +305,42 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for Har skadelidt hatt fravær`() {
-        hentKodeverdilisteFor("harSkadelidtHattFravaer", "arbeidstaker", 4)
-        hentKodeverdilisteFor("harSkadelidtHattFravaer", "laerling", 4)
-        hentKodeverdilisteFor("harSkadelidtHattFravaer", "elevEllerStudent", 0)
-        hentKodeverdilisteFor("harSkadelidtHattFravaer", "tiltaksdeltaker", 4)
+        val type = "harSkadelidtHattFravaer"
+        hentKodeverdilisteFor(type, "arbeidstaker", 4)
+        hentKodeverdilisteFor(type, "laerling", 4)
+        hentKodeverdilisteFor(type, "elevEllerStudent", 0)
+        hentKodeverdilisteFor(type, "tiltaksdeltaker", 4)
+        hentKodeverdilisteFor(type, "militaerTilsatt", 0)
+        hentKodeverdilisteFor(type, "militaerLaerling", 0)
+        hentKodeverdilisteFor(type, "militaerElev", 0)
+        hentKodeverdilisteFor(type, "vernepliktigIRepetisjonstjeneste", 0)
+        hentKodeverdilisteFor(type, "frivilligTjenestegjørendeMilitaer", 0)
     }
 
     @Test
     fun `hent liste med kodeverkverdier for Type arbeidsplass`() {
-        hentKodeverdilisteFor("typeArbeidsplass", "arbeidstaker", 21)
-        hentKodeverdilisteFor("typeArbeidsplass", "laerling", 21)
-        hentKodeverdilisteFor("typeArbeidsplass", "elevEllerStudent", 0)
-        hentKodeverdilisteFor("typeArbeidsplass", "tiltaksdeltaker", 21)
+        val type = "typeArbeidsplass"
+        hentKodeverdilisteFor(type, "arbeidstaker", 21)
+        hentKodeverdilisteFor(type, "laerling", 21)
+        hentKodeverdilisteFor(type, "elevEllerStudent", 0)
+        hentKodeverdilisteFor(type, "tiltaksdeltaker", 21)
+        hentKodeverdilisteFor(type, "militaerTilsatt", 0)
+        hentKodeverdilisteFor(type, "militaerLaerling", 0)
+        hentKodeverdilisteFor(type, "militaerElev", 0)
+        hentKodeverdilisteFor(type, "vernepliktigIRepetisjonstjeneste", 0)
     }
 
     @Test
     fun `hent liste med kodeverkverdier for Bakgrunnen for hendelsen`() {
-        hentKodeverdilisteFor("bakgrunnForHendelsen", "arbeidstaker", 33)
-        hentKodeverdilisteFor("bakgrunnForHendelsen", "laerling", 33)
-        hentKodeverdilisteFor("bakgrunnForHendelsen", "elevEllerStudent", 0)
-        hentKodeverdilisteFor("bakgrunnForHendelsen", "tiltaksdeltaker", 33)
+        val type = "bakgrunnForHendelsen"
+        hentKodeverdilisteFor(type, "arbeidstaker", 33)
+        hentKodeverdilisteFor(type, "laerling", 33)
+        hentKodeverdilisteFor(type, "elevEllerStudent", 0)
+        hentKodeverdilisteFor(type, "tiltaksdeltaker", 33)
+        hentKodeverdilisteFor(type, "militaerTilsatt", 0)
+        hentKodeverdilisteFor(type, "militaerLaerling", 0)
+        hentKodeverdilisteFor(type, "militaerElev", 0)
+        hentKodeverdilisteFor(type, "vernepliktigIRepetisjonstjeneste", 0)
     }
 
     @Test
@@ -325,7 +350,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for rolletype`() {
-        hentKodeverdilisteFor("rolletype", 6)
+        hentKodeverdilisteFor("rolletype", 8)
     }
 
     @Test

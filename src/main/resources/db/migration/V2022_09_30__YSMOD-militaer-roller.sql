@@ -20,7 +20,7 @@ INSERT INTO kategori_type (kategori_navn, type_navn) VALUES ('militaerLaerling',
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering)
 SELECT 'militaerLaerling', type_navn, kode, sortering FROM kategori_type_kode WHERE kategori_navn = 'militaerTilsatt' AND type_navn = 'tidsrom';
 
-INSERT INTO kategori_type (kategori_navn, type_navn) VALUES ('militaerLaerling', 'tidsrom');
+INSERT INTO kategori_type (kategori_navn, type_navn) VALUES ('militaerLaerling', 'hvorSkjeddeUlykken');
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering)
 SELECT 'militaerLaerling', type_navn, kode, sortering FROM kategori_type_kode WHERE kategori_navn = 'militaerTilsatt' AND type_navn = 'hvorSkjeddeUlykken';
 
@@ -40,9 +40,12 @@ INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUE
 INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('frivilligTjenestegjoerendeIForsvaret', '2022-09-29', null);
 INSERT INTO type_kode (type_navn, kode) VALUES ('rolletype','frivilligTjenestegjoerendeIForsvaret');
 INSERT INTO kategori (navn, beskrivelse) VALUES ('frivilligTjenestegjoerendeIForsvaret', 'Frivillig tjenestegjørende i Forsvaret');
-INSERT INTO verdi(kode, verdi, spraak) VALUES ('frivillingTjenestegjoerendeIForsvaret', 'Frivillig tjenestegjørende i Forsvaret', 'nb');
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('frivilligTjenestegjoerendeIForsvaret', 'nb', 'Frivillig tjenestegjørende i Forsvaret');
 
 INSERT INTO kategori_type (kategori_navn, type_navn) VALUES ('frivilligTjenestegjoerendeIForsvaret', 'tidsrom');
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering)
 SELECT 'frivilligTjenestegjoerendeIForsvaret', type_navn, kode, sortering FROM kategori_type_kode WHERE kategori_navn = 'vernepliktigIFoerstegangstjenesten' AND type_navn = 'tidsrom';
+
+-- Manglende verdi --
+INSERT INTO verdi (kode, spraak, verdi) VALUES ('vernepliktigIRepetisjonstjeneste', 'nb', 'Vernepliktig i repetisjonstjeneste');
 

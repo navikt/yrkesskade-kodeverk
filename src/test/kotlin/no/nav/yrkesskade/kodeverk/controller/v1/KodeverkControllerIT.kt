@@ -83,12 +83,12 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent kodeverk kategorier for tidsrom`() {
-        hentKategorierFor("tidsrom", 10)
+        hentKategorierFor("tidsrom", 9)
     }
 
     @Test
     fun `hent kodeverk kategorier for Hvor skjedde ulykken`() {
-        hentKategorierFor("hvorSkjeddeUlykken", 5)
+        hentKategorierFor("hvorSkjeddeUlykken", 6)
     }
 
     @Test
@@ -350,7 +350,7 @@ class KodeverkControllerIT : AbstractIT() {
 
     @Test
     fun `hent liste med kodeverkverdier for rolletype`() {
-        hentKodeverdilisteFor("rolletype", 8)
+        hentKodeverdilisteFor("rolletype", 10)
     }
 
     @Test

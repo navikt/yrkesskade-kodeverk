@@ -266,7 +266,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor(type, "militaerTilsatt", 9)
         hentKodeverdilisteFor(type, "militaerLaerling", 9)
         hentKodeverdilisteFor(type, "militaerElev", 6)
-        hentKodeverdilisteFor(type, "frivilligTjenestegjørendeMilitaer", 5)
+        hentKodeverdilisteFor(type, "frivilligTjenestegjoerendeIForsvaret", 5)
     }
 
     @Test
@@ -285,7 +285,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor(type, "militaerLaerling", 12)
         hentKodeverdilisteFor(type, "militaerElev", 0)
         hentKodeverdilisteFor(type, "vernepliktigIRepetisjonstjeneste", 0)
-        hentKodeverdilisteFor(type, "frivilligTjenestegjørendeMilitaer", 0)
+        hentKodeverdilisteFor(type, "frivilligTjenestegjoerendeIForsvaret", 0)
     }
 
     @Test
@@ -314,7 +314,7 @@ class KodeverkControllerIT : AbstractIT() {
         hentKodeverdilisteFor(type, "militaerLaerling", 0)
         hentKodeverdilisteFor(type, "militaerElev", 0)
         hentKodeverdilisteFor(type, "vernepliktigIRepetisjonstjeneste", 0)
-        hentKodeverdilisteFor(type, "frivilligTjenestegjørendeMilitaer", 0)
+        hentKodeverdilisteFor(type, "frivilligTjenestegjoerendeIForsvaret", 0)
     }
 
     @Test

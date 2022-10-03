@@ -37,11 +37,12 @@ INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUE
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering) VALUES ('militaerElev', 'tidsrom', 'alternativenePasserIkke', 1000);
 
 -- Frivillig tjenestegjørende --
-INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('frivilligTjenestegjørendeMilitaer', '2022-09-29', null);
-INSERT INTO type_kode (type_navn, kode) VALUES ('rolletype','frivilligTjenestegjørendeMilitaer');
-INSERT INTO kategori (navn, beskrivelse) VALUES ('frivilligTjenestegjørendeMilitaer', 'Militær elev');
+INSERT INTO kode (kode, gyldig_fra, gyldig_til) VALUES ('frivilligTjenestegjoerendeIForsvaret', '2022-09-29', null);
+INSERT INTO type_kode (type_navn, kode) VALUES ('rolletype','frivilligTjenestegjoerendeIForsvaret');
+INSERT INTO kategori (navn, beskrivelse) VALUES ('frivilligTjenestegjoerendeIForsvaret', 'Frivillig tjenestegjørende i Forsvaret');
+INSERT INTO verdi(kode, verdi, spraak) VALUES ('frivillingTjenestegjoerendeIForsvaret', 'Frivillig tjenestegjørende i Forsvaret', 'nb');
 
-INSERT INTO kategori_type (kategori_navn, type_navn) VALUES ('frivilligTjenestegjørendeMilitaer', 'tidsrom');
+INSERT INTO kategori_type (kategori_navn, type_navn) VALUES ('frivilligTjenestegjoerendeIForsvaret', 'tidsrom');
 INSERT INTO kategori_type_kode (kategori_navn, type_navn, kode, sortering)
-SELECT 'frivilligTjenestegjørendeMilitaer', type_navn, kode, sortering FROM kategori_type_kode WHERE kategori_navn = 'vernepliktigIFoerstegangstjenesten' AND type_navn = 'tidsrom';
+SELECT 'frivilligTjenestegjoerendeIForsvaret', type_navn, kode, sortering FROM kategori_type_kode WHERE kategori_navn = 'vernepliktigIFoerstegangstjenesten' AND type_navn = 'tidsrom';
 

@@ -28,3 +28,4 @@ api:
   whitelist:
     clients:
       - ab05f576-7861-4dc2-8f23-1e4c04f61b1d # saksbehandling backend
+      - 912676d0-8252-40e1-89d5-c70814c5cbfb # saksbehandling frontend
